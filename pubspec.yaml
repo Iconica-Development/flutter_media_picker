@@ -1,0 +1,33 @@
+name: flutter_media_picker
+description: A new Flutter package project.
+version: 0.0.1
+homepage: https://github.com/Iconica-Development/flutter_media_picker
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  image_picker: any
+  video_player: any
+  path_provider: any
+  hooks_riverpod : any
+  flutter_sound: any
+  intl: any
+  permission_handler: any
+  logger: any
+  flutter_form:
+    git:
+      url: https://github.com/Iconica-Development/flutter_form.git
+      ref: 1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
