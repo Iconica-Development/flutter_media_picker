@@ -134,50 +134,12 @@ class MediaPicker extends ConsumerWidget {
       children: [
         for (final input in inputs) ...[
           const SizedBox(height: 2.5),
-          header?.call(input.label, input.onPressed) ??
+          header?.call(input.label, (BuildContext ct) async {
+                await onPressedMediaType(ct, input);
+              }) ??
               GestureDetector(
                 onTap: () async {
-                  MediaResult content = await input.onPressed(context);
-
-                  if (mediaCheckPage != null &&
-                      (input.runtimeType == MediaPickerInputText ||
-                          _hasContent(content))) {
-                    var checkPage = mediaCheckPage!(
-                      await input.displayResult(content),
-                      input.checkPageSettings,
-                      (Map<String, dynamic> results) {
-                        MediaResult result = MediaResult(
-                          fileValue: content.fileValue,
-                          textValue: content.textValue,
-                          checkPageResults: results,
-                        );
-
-                        if (input.onComplete != null) {
-                          input.onComplete!(result);
-                        }
-
-                        if (onComplete != null) {
-                          onComplete!(result);
-                        }
-                      },
-                    );
-
-                    // ignore: use_build_context_synchronously
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => checkPage,
-                      ),
-                    );
-                  } else {
-                    if (input.onComplete != null) {
-                      input.onComplete!(content);
-                    }
-
-                    if (onComplete != null) {
-                      onComplete!(content);
-                    }
-                  }
+                  await onPressedMediaType(context, input);
                 },
                 child: Container(
                   height: 55,
@@ -206,6 +168,50 @@ class MediaPicker extends ConsumerWidget {
         ],
       ],
     );
+  }
+
+  Future<void> onPressedMediaType(
+      BuildContext context, MediaPickerInput input) async {
+    MediaResult content = await input.onPressed(context);
+
+    if (mediaCheckPage != null &&
+        (input.runtimeType == MediaPickerInputText || _hasContent(content))) {
+      var checkPage = mediaCheckPage!(
+        await input.displayResult(content),
+        input.checkPageSettings,
+        (Map<String, dynamic> results) {
+          MediaResult result = MediaResult(
+            fileValue: content.fileValue,
+            textValue: content.textValue,
+            checkPageResults: results,
+          );
+
+          if (input.onComplete != null) {
+            input.onComplete!(result);
+          }
+
+          if (onComplete != null) {
+            onComplete!(result);
+          }
+        },
+      );
+
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => checkPage,
+        ),
+      );
+    } else {
+      if (input.onComplete != null) {
+        input.onComplete!(content);
+      }
+
+      if (onComplete != null) {
+        onComplete!(content);
+      }
+    }
   }
 
   bool _hasContent(MediaResult content) {
