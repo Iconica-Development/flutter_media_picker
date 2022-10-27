@@ -94,8 +94,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "2.0.0"
-      resolved-ref: "39a09251c62ca8905bcf97299c87528f049d2f52"
+      ref: "2.0.1"
+      resolved-ref: "86426c09bc39a3d926a6cf1f2f77377d92c76aec"
       url: "https://github.com/Iconica-Development/flutter_form.git"
     source: git
     version: "1.0.2"

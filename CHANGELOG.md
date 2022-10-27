@@ -13,3 +13,7 @@
 ## 0.1.0
 
 - Ability to set styling for the audio input.
+
+## 0.1.1
+
+- Updated flutter_form version to 2.0.1
