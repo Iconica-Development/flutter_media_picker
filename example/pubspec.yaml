@@ -36,7 +36,7 @@ dependencies:
   flutter_form:
     git:
       url: https://github.com/Iconica-Development/flutter_form.git
-      ref: 2.0.0
+      ref: 2.0.1
   flutter_media_picker: 
     path: ../
 
