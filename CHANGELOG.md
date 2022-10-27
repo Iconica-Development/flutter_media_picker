@@ -9,3 +9,7 @@
 ## 0.0.3
 
 - Fixed bug where onTap was not working when header is set
+
+## 0.1.0
+
+- Ability to set styling for the audio input.
