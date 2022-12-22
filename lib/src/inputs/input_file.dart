@@ -16,6 +16,7 @@ import '../../flutter_media_picker.dart';
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
     this.label = "File",
+    this.icon = const Icon(Icons.file_copy),
     this.fileExtensions = const ['pdf', 'jpg', 'png'],
     this.checkPageSettings,
     this.onComplete,
@@ -27,6 +28,9 @@ class MediaPickerInputFile implements MediaPickerInput {
 
   @override
   String label;
+
+  @override
+  Widget icon;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
@@ -64,7 +68,7 @@ class MediaPickerInputFile implements MediaPickerInput {
         case '.txt':
           return const DisplayText();
         default:
-}
+      }
     }
 
     return Container();

@@ -59,6 +59,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                 height: 15,
               ),
               MediaPicker(
+                buttonType: ButtonType.icons,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
                     pickFile: mediaService.pickImageFile,

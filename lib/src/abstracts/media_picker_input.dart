@@ -3,11 +3,14 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
+import 'package:flutter_media_picker/src/enums/button_type.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
 
 /// Abstract class for inputs used by [MediaPicker].
 ///
-/// The [label] is used as the title in the header.
+/// The [label] is used as the title in the header and under the icon, based on which [ButtonType] you chose.
+///
+/// The [icon] is used as the icon in the iconButton if [ButtonType] is icon.
 ///
 /// [onPressed] is called when the user has chosen the input to use.
 ///
@@ -20,6 +23,8 @@ import 'package:flutter_media_picker/src/media_result.dart';
 /// If checkpage is set this method will be called when the [onComplete] is called in the checkPage.
 abstract class MediaPickerInput {
   String label = "Media Picker input";
+
+  Widget icon = const Icon(Icons.image);
 
   Future<MediaResult> onPressed(BuildContext context);
 

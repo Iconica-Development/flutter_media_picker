@@ -13,6 +13,7 @@ import 'package:flutter_media_picker/src/media_result.dart';
 class MediaPickerInputPhoto implements MediaPickerInput {
   MediaPickerInputPhoto({
     this.label = "Photo",
+    this.icon = const Icon(Icons.image),
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
@@ -22,6 +23,9 @@ class MediaPickerInputPhoto implements MediaPickerInput {
 
   @override
   String label;
+
+  @override
+  Widget icon;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {

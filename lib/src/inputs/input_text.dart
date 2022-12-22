@@ -12,12 +12,16 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class MediaPickerInputText implements MediaPickerInput {
   MediaPickerInputText({
     this.label = "Text",
+    this.icon = const Icon(Icons.text_fields),
     this.checkPageSettings,
     this.onComplete,
   });
 
   @override
   String label;
+
+  @override
+  Widget icon;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {

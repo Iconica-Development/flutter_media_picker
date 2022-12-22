@@ -104,14 +104,19 @@ class MediaPicker extends ConsumerWidget {
   const MediaPicker({
     this.mediaPickerInputs,
     this.header,
+    this.iconButton,
     this.onComplete,
     this.mediaCheckPage,
+    this.buttonType = ButtonType.text,
     Key? key,
   }) : super(key: key);
 
   final List<MediaPickerInput>? mediaPickerInputs;
   final Widget Function(String label, Function onPressed)? header;
+  final Widget Function(String label, Widget icon, Function onPressed)?
+      iconButton;
   final void Function(MediaResult result)? onComplete;
+  final ButtonType buttonType;
   final Widget Function(
       Widget displayResult,
       Map<String, dynamic>? inputSettings,
@@ -136,40 +141,58 @@ class MediaPicker extends ConsumerWidget {
 
     return Column(
       children: [
-        for (final input in inputs) ...[
-          const SizedBox(height: 2.5),
-          header?.call(input.label, (BuildContext ct) async {
-                await onPressedMediaType(ct, input);
-              }) ??
-              GestureDetector(
-                onTap: () async {
-                  await onPressedMediaType(context, input);
-                },
-                child: Container(
-                  height: 55,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Color(0xFF979797),
-                        width: 1,
+        if (buttonType == ButtonType.text) ...[
+          for (final input in inputs) ...[
+            const SizedBox(height: 2.5),
+            header?.call(input.label, (BuildContext ct) async {
+                  await onPressedMediaType(ct, input);
+                }) ??
+                GestureDetector(
+                  onTap: () async {
+                    await onPressedMediaType(context, input);
+                  },
+                  child: Container(
+                    height: 55,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Color(0xFF979797),
+                          width: 1,
+                        ),
                       ),
                     ),
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        input.label,
-                        style: Theme.of(context).textTheme.headline6,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Text(
+                          input.label,
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
                       ),
                     ),
                   ),
                 ),
+            const SizedBox(height: 2.5),
+          ],
+        ] else ...[
+          for (final input in inputs) ...[
+            iconButton?.call(input.label, input.icon, (BuildContext ct) async {
+                  await onPressedMediaType(ct, input);
+                }) ?? GestureDetector(
+              onTap: () async {
+                await onPressedMediaType(context, input);
+              },
+              child: Column(
+                children: [
+                  input.icon,
+                  Text(input.label),
+                ],
               ),
-          const SizedBox(height: 2.5),
-        ],
+            )
+          ],
+        ]
       ],
     );
   }

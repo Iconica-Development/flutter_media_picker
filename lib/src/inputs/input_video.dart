@@ -11,6 +11,7 @@ import 'package:flutter_media_picker/flutter_media_picker.dart';
 class MediaPickerInputVideo implements MediaPickerInput {
   MediaPickerInputVideo({
     this.label = "Video",
+    this.icon = const Icon(Icons.video_camera_front),
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
@@ -22,6 +23,9 @@ class MediaPickerInputVideo implements MediaPickerInput {
 
   @override
   String label;
+
+  @override
+  Widget icon;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {

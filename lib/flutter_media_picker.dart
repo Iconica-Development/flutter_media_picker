@@ -9,6 +9,7 @@ export './src/inputs/inputs.dart';
 export './src/service/services.dart';
 export './src/media_result.dart';
 export './src/media_picker.dart';
+export './src/enums/enums.dart';
 
 import 'package:flutter_media_picker/flutter_media_picker.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
