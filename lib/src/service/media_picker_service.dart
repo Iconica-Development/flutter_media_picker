@@ -17,6 +17,7 @@ class MediaPickerFileService implements MediaPickerService {
 
   @override
   Future<Uint8List?> pickImageFile() async {
+    
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
 
     if (image != null) {
@@ -46,5 +47,10 @@ class MediaPickerFileService implements MediaPickerService {
     await controller.initialize();
     await controller.setLooping(true);
     await controller.play();
+  }
+
+  @override
+  Future<Uint8List?> pickFile() async {
+    return null;
   }
 }

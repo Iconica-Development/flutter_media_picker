@@ -5,6 +5,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_image_picker/flutter_image_picker.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 
 import 'package:flutter_media_picker/src/media_result.dart';
@@ -25,7 +26,13 @@ class MediaPickerInputPhoto implements MediaPickerInput {
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
-    var image = await pickFile?.call();
+    var image = await showModalBottomSheet<Uint8List?>(
+        context: context,
+        backgroundColor: Colors.white,
+        builder: (BuildContext context) => const ImagePicker(
+              imagePickerConfig: ImagePickerConfig(
+                  maxHeight: 300, maxWidth: 200, imageQuality: 40),
+            ));
 
     if (image != null && image.isNotEmpty) {
       return MediaResult(

@@ -12,7 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  image_picker: any
+  flutter_image_picker:
+    git:
+      url: https://github.com/Iconica-Development/flutter_image_picker
+      ref: 1.0.3
+  file_picker: any
   video_player: any
   path_provider: any
   hooks_riverpod: any
