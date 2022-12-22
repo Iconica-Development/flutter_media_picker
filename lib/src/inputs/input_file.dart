@@ -10,6 +10,8 @@ import 'package:path/path.dart' as path;
 
 import 'package:flutter_media_picker/src/media_result.dart';
 
+import '../../flutter_media_picker.dart';
+
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
@@ -59,12 +61,10 @@ class MediaPickerInputFile implements MediaPickerInput {
         case '.doc':
         case '.docx':
           return Text(result.fileName!);
+        case '.txt':
+          return const DisplayText();
         default:
-      }
-      // return Image.memory(
-      //   result.fileValue!,
-      //   height: 250,
-      // );
+}
     }
 
     return Container();

@@ -5,7 +5,6 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_image_picker/flutter_image_picker.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 
 import 'package:flutter_media_picker/src/media_result.dart';
@@ -13,7 +12,7 @@ import 'package:flutter_media_picker/src/media_result.dart';
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputPhoto implements MediaPickerInput {
   MediaPickerInputPhoto({
-    this.label = "Foto",
+    this.label = "Photo",
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,

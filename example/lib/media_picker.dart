@@ -49,7 +49,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                 height: 14,
               ),
               const Text(
-                'Maken',
+                'Create/Pick',
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 20,
@@ -63,7 +63,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                   MediaPickerInputPhoto(
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
-                      'title': 'Foto delen',
+                      'title': 'Share photo',
                       'width': 125.0,
                       'height': 200.0,
                     },
@@ -75,7 +75,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
-                      'title': 'Video delen',
+                      'title': 'Share video',
                       'width': 122.5,
                       'height': 200.0,
                     },
@@ -85,14 +85,14 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                   ),
                   if (!kIsWeb)
                     MediaPickerInputAudio(
-                      checkPageSettings: {'title': 'Audio delen'},
+                      checkPageSettings: {'title': 'Share audio'},
                       onComplete: (MediaResult result) {
                         Navigator.pop(context);
                       },
                       audioService: audioService,
                     ),
                   MediaPickerInputText(
-                    checkPageSettings: {'title': 'Tekst delen'},
+                    checkPageSettings: {'title': 'Share text'},
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
                     },
@@ -107,9 +107,13 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                       'docx',
                       'bmp',
                       'gif',
+                      'txt',
                     ],
                     checkPageSettings: {
-                      'title': 'Bestand delen',
+                      'title': 'Share file',
+                    },
+                    onComplete: (MediaResult result) {
+                      Navigator.pop(context);
                     },
                   ),
                 ],
