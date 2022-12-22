@@ -10,6 +10,8 @@ class MediaResult {
     this.textValue,
     this.fileValue,
     this.checkPageResults,
+    this.fileType,
+    this.fileName,
   });
 
   /// For textfield returns actual text,
@@ -21,4 +23,10 @@ class MediaResult {
 
   /// Returns the values from the checkPageResults if checkpage is set.
   final Map<String, dynamic>? checkPageResults;
+
+  /// Returns the filetype when a file is selected with the FilePicker.
+  final String? fileType;
+
+  /// Returns the file name when a file is selected with the FilePicker.
+  final String? fileName;
 }

@@ -187,6 +187,7 @@ class MediaPicker extends ConsumerWidget {
           MediaResult result = MediaResult(
             fileValue: content.fileValue,
             textValue: content.textValue,
+            fileType: content.fileType,
             checkPageResults: results,
           );
 

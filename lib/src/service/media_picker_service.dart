@@ -4,6 +4,7 @@
 
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_service.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,7 +18,6 @@ class MediaPickerFileService implements MediaPickerService {
 
   @override
   Future<Uint8List?> pickImageFile() async {
-    
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
 
     if (image != null) {
@@ -50,7 +50,17 @@ class MediaPickerFileService implements MediaPickerService {
   }
 
   @override
-  Future<Uint8List?> pickFile() async {
-    return null;
+  Future<FilePickerResult?> pickFile(List<String> extensions) async {
+    var file = await FilePicker.platform.pickFiles(
+      withData: true,
+      type: FileType.custom,
+      allowedExtensions: extensions,
+    );
+
+    if (file != null) {
+      return file;
+    }
+
+    return Future.value(null);
   }
 }

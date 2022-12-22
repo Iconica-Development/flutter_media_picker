@@ -26,13 +26,7 @@ class MediaPickerInputPhoto implements MediaPickerInput {
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
-    var image = await showModalBottomSheet<Uint8List?>(
-        context: context,
-        backgroundColor: Colors.white,
-        builder: (BuildContext context) => const ImagePicker(
-              imagePickerConfig: ImagePickerConfig(
-                  maxHeight: 300, maxWidth: 200, imageQuality: 40),
-            ));
+    var image = await pickFile?.call();
 
     if (image != null && image.isNotEmpty) {
       return MediaResult(

@@ -4,6 +4,8 @@
 
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
+
 abstract class MediaPickerService {
   /// Returns [Uint8List] based on given [ImageSource].
   Future<Uint8List?> pickImageFile();
@@ -12,5 +14,5 @@ abstract class MediaPickerService {
   Future<Uint8List?> pickVideoFile();
 
   /// Returns [Uint8List] based on given [File].
-  Future<Uint8List?> pickFile();
+  Future<FilePickerResult?> pickFile(List<String> fileExtensions);
 }

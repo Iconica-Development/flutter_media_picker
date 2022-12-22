@@ -97,6 +97,21 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                       Navigator.pop(context);
                     },
                   ),
+                  MediaPickerInputFile(
+                    pickFile: mediaService.pickFile,
+                    fileExtensions: [
+                      'pdf',
+                      'doc',
+                      'png',
+                      'jpg',
+                      'docx',
+                      'bmp',
+                      'gif',
+                    ],
+                    checkPageSettings: {
+                      'title': 'Bestand delen',
+                    },
+                  ),
                 ],
                 mediaCheckPage: (Widget displayResult,
                         Map<String, dynamic>? inputSettings,
