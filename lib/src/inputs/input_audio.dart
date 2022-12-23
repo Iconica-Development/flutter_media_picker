@@ -7,21 +7,24 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
+import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 /// Input for audio used by [MediaPicker].
 ///
-/// This feature is only usable for nativa applications.
+/// This feature is only usable for native applications.
 class MediaPickerInputAudio implements MediaPickerInput {
   MediaPickerInputAudio({
     this.label = "Audio",
-    this.icon = const Icon(Icons.audio_file),
     this.checkPageSettings,
     this.onComplete,
     required this.audioService,
     this.inputStyling,
-  });
+  }) : icon = IconButtonWithText(
+          icon: Icons.record_voice_over,
+          iconText: label,
+        );
 
   final AudioService audioService;
 

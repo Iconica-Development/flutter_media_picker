@@ -6,16 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form/flutter_form.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
+import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Input for text used by [MediaPicker].
 class MediaPickerInputText implements MediaPickerInput {
   MediaPickerInputText({
     this.label = "Text",
-    this.icon = const Icon(Icons.text_fields),
     this.checkPageSettings,
     this.onComplete,
-  });
+  }) : icon = IconButtonWithText(
+          icon: Icons.text_fields,
+          iconText: label,
+        );
 
   @override
   String label;

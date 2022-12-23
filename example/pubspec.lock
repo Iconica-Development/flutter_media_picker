@@ -113,15 +113,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.18.5+1"
-  flutter_image_picker:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "1.0.3"
-      resolved-ref: "20814755cca74296600a0ae3e016e46979e66a7e"
-      url: "https://github.com/Iconica-Development/flutter_image_picker"
-    source: git
-    version: "1.0.3"
   flutter_lints:
     dependency: "direct dev"
     description:

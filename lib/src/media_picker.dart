@@ -100,6 +100,7 @@ import '../flutter_media_picker.dart';
 ///   ],
 /// );
 ///```
+
 class MediaPicker extends ConsumerWidget {
   const MediaPicker({
     this.mediaPickerInputs,
@@ -108,6 +109,8 @@ class MediaPicker extends ConsumerWidget {
     this.onComplete,
     this.mediaCheckPage,
     this.buttonType = ButtonType.text,
+    this.horizontalSpacing = 0,
+    this.verticalSpacing = 0,
     Key? key,
   }) : super(key: key);
 
@@ -117,6 +120,8 @@ class MediaPicker extends ConsumerWidget {
       iconButton;
   final void Function(MediaResult result)? onComplete;
   final ButtonType buttonType;
+  final double horizontalSpacing;
+  final double verticalSpacing;
   final Widget Function(
       Widget displayResult,
       Map<String, dynamic>? inputSettings,
@@ -139,7 +144,11 @@ class MediaPicker extends ConsumerWidget {
       inputs = mediaPickerInputs!;
     }
 
-    return Column(
+    return Wrap(
+      alignment: WrapAlignment.center,
+      direction: Axis.horizontal,
+      spacing: horizontalSpacing,
+      runSpacing: verticalSpacing,
       children: [
         if (buttonType == ButtonType.text) ...[
           for (final input in inputs) ...[
@@ -180,17 +189,17 @@ class MediaPicker extends ConsumerWidget {
           for (final input in inputs) ...[
             iconButton?.call(input.label, input.icon, (BuildContext ct) async {
                   await onPressedMediaType(ct, input);
-                }) ?? GestureDetector(
-              onTap: () async {
-                await onPressedMediaType(context, input);
-              },
-              child: Column(
-                children: [
-                  input.icon,
-                  Text(input.label),
-                ],
-              ),
-            )
+                }) ??
+                GestureDetector(
+                  onTap: () async {
+                    await onPressedMediaType(context, input);
+                  },
+                  child: Wrap(
+                    children: [
+                      input.icon,
+                    ],
+                  ),
+                ),
           ],
         ]
       ],

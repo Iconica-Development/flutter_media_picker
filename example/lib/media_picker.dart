@@ -58,10 +58,14 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
               const SizedBox(
                 height: 15,
               ),
+              // Icons example of Media Picker
               MediaPicker(
                 buttonType: ButtonType.icons,
+                horizontalSpacing: 40,
+                verticalSpacing: 20,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
+                    label: "Make photo",
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
                       'title': 'Share photo',
@@ -73,6 +77,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                     },
                   ),
                   MediaPickerInputVideo(
+                    label: "Make video",
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
@@ -86,6 +91,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                   ),
                   if (!kIsWeb)
                     MediaPickerInputAudio(
+                      label: "Record audio",
                       checkPageSettings: {'title': 'Share audio'},
                       onComplete: (MediaResult result) {
                         Navigator.pop(context);
@@ -93,12 +99,14 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                       audioService: audioService,
                     ),
                   MediaPickerInputText(
+                    label: "Write text",
                     checkPageSettings: {'title': 'Share text'},
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
                     },
                   ),
                   MediaPickerInputFile(
+                    label: "Select file",
                     pickFile: mediaService.pickFile,
                     fileExtensions: [
                       'pdf',
@@ -128,6 +136,83 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                   onComplete: onComplete,
                 ),
               ),
+
+              // Text example of Media Picker
+              // MediaPicker(
+              //   buttonType: ButtonType.text,
+              //   mediaPickerInputs: [
+              //     MediaPickerInputPhoto(
+              //       label: "Make photo",
+              //       pickFile: mediaService.pickImageFile,
+              //       checkPageSettings: {
+              //         'title': 'Share photo',
+              //         'width': 125.0,
+              //         'height': 200.0,
+              //       },
+              //       onComplete: (MediaResult result) {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //     MediaPickerInputVideo(
+              //       label: "Make video",
+              //       pickFile: mediaService.pickVideoFile,
+              //       videoPlayerFactory: MediaPickerVideoPlayerFactory(),
+              //       checkPageSettings: {
+              //         'title': 'Share video',
+              //         'width': 122.5,
+              //         'height': 200.0,
+              //       },
+              //       onComplete: (MediaResult result) {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //     if (!kIsWeb)
+              //       MediaPickerInputAudio(
+              //         label: "Record audio",
+              //         checkPageSettings: {'title': 'Share audio'},
+              //         onComplete: (MediaResult result) {
+              //           Navigator.pop(context);
+              //         },
+              //         audioService: audioService,
+              //       ),
+              //     MediaPickerInputText(
+              //       label: "Write text",
+              //       checkPageSettings: {'title': 'Share text'},
+              //       onComplete: (MediaResult result) {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //     MediaPickerInputFile(
+              //       label: "Select file",
+              //       pickFile: mediaService.pickFile,
+              //       fileExtensions: [
+              //         'pdf',
+              //         'doc',
+              //         'png',
+              //         'jpg',
+              //         'docx',
+              //         'bmp',
+              //         'gif',
+              //         'txt',
+              //       ],
+              //       checkPageSettings: {
+              //         'title': 'Share file',
+              //       },
+              //       onComplete: (MediaResult result) {
+              //         Navigator.pop(context);
+              //       },
+              //     ),
+              //   ],
+              //   mediaCheckPage: (Widget displayResult,
+              //           Map<String, dynamic>? inputSettings,
+              //           Function onComplete) =>
+              //       MediaCheckPage(
+              //     cancel: widget.callback,
+              //     displayResult: displayResult,
+              //     inputSettings: inputSettings ?? {},
+              //     onComplete: onComplete,
+              //   ),
+              // ),
               const SizedBox(
                 height: 30,
               ),

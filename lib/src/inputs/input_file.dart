@@ -4,11 +4,9 @@
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
+import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 import 'package:path/path.dart' as path;
-
-import 'package:flutter_media_picker/src/media_result.dart';
 
 import '../../flutter_media_picker.dart';
 
@@ -16,12 +14,11 @@ import '../../flutter_media_picker.dart';
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
     this.label = "File",
-    this.icon = const Icon(Icons.file_copy),
     this.fileExtensions = const ['pdf', 'jpg', 'png'],
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
-  });
+  }) : icon = IconButtonWithText(icon: Icons.file_copy, iconText: label,);
 
   final Future<FilePickerResult?> Function(List<String>)? pickFile;
   final List<String> fileExtensions;

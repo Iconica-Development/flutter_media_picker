@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/enums/button_type.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
+import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 /// Abstract class for inputs used by [MediaPicker].
 ///
@@ -24,7 +25,7 @@ import 'package:flutter_media_picker/src/media_result.dart';
 abstract class MediaPickerInput {
   String label = "Media Picker input";
 
-  Widget icon = const Icon(Icons.image);
+  Widget icon = const IconButtonWithText();
 
   Future<MediaResult> onPressed(BuildContext context);
 

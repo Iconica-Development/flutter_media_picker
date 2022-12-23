@@ -8,16 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 
 import 'package:flutter_media_picker/src/media_result.dart';
+import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputPhoto implements MediaPickerInput {
   MediaPickerInputPhoto({
     this.label = "Photo",
-    this.icon = const Icon(Icons.image),
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
-  });
+  }) : icon = IconButtonWithText(
+          icon: Icons.camera_alt,
+          iconText: label,
+        );
 
   final Future<Uint8List?> Function()? pickFile;
 
