@@ -13,7 +13,7 @@ import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputPhoto implements MediaPickerInput {
   MediaPickerInputPhoto({
-    this.label = "Photo",
+    this.label = 'Photo',
     Widget? icon,
     this.checkPageSettings,
     this.onComplete,

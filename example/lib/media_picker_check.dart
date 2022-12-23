@@ -70,7 +70,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                       widget.cancel();
                       formController.autoNextStep();
                     },
-                    child: const Text("Share"),
+                    child: const Text('Share'),
                   ),
                 ),
               ),
@@ -140,7 +140,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                     ),
                     Expanded(
                       child: FlutterFormInputMultiLine(
-                          hint: "Add description...",
+                          hint: 'Add description...',
                           maxCharacters: 300,
                           controller: descriptionController),
                     ),

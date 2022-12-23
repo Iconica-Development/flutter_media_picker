@@ -15,7 +15,7 @@ import 'package:intl/intl.dart';
 /// This feature is only usable for native applications.
 class MediaPickerInputAudio implements MediaPickerInput {
   MediaPickerInputAudio({
-    this.label = "Audio",
+    this.label = 'Audio',
     Widget? icon,
     this.checkPageSettings,
     this.onComplete,
@@ -50,7 +50,7 @@ class MediaPickerInputAudio implements MediaPickerInput {
             if (content.fileValue != null) {
               audio = content;
             } else {
-              throw Exception("No recording returned");
+              throw Exception('No recording returned');
             }
           },
           inputStyling: inputStyling ?? AudioInputStyling(),

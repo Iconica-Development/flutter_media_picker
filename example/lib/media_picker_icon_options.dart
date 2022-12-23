@@ -65,10 +65,10 @@ class _MediaPickerIconOptionsState extends ConsumerState<MediaPickerPageIconOpti
                 verticalSpacing: 20,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
-                    label: "Make photo",
+                    label: 'Make photo',
                     icon: const IconButtonWithText(
                       icon: Icons.camera_alt,
-                      iconText: "Custom Photo Icon",
+                      iconText: 'Custom Photo Icon',
                     ),
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
@@ -81,7 +81,7 @@ class _MediaPickerIconOptionsState extends ConsumerState<MediaPickerPageIconOpti
                     },
                   ),
                   MediaPickerInputVideo(
-                    label: "Make video",
+                    label: 'Make video',
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
@@ -95,7 +95,7 @@ class _MediaPickerIconOptionsState extends ConsumerState<MediaPickerPageIconOpti
                   ),
                   if (!kIsWeb)
                     MediaPickerInputAudio(
-                      label: "Record audio",
+                      label: 'Record audio',
                       checkPageSettings: {'title': 'Share audio'},
                       onComplete: (MediaResult result) {
                         Navigator.pop(context);
@@ -103,14 +103,14 @@ class _MediaPickerIconOptionsState extends ConsumerState<MediaPickerPageIconOpti
                       audioService: audioService,
                     ),
                   MediaPickerInputText(
-                    label: "Write text",
+                    label: 'Write text',
                     checkPageSettings: {'title': 'Share text'},
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
                     },
                   ),
                   MediaPickerInputFile(
-                    label: "Select file",
+                    label: 'Select file',
                     pickFile: mediaService.pickFile,
                     fileExtensions: [
                       'pdf',

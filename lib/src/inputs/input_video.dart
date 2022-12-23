@@ -10,7 +10,7 @@ import 'package:flutter_media_picker/flutter_media_picker.dart';
 /// Input for video used by [MediaPicker].
 class MediaPickerInputVideo implements MediaPickerInput {
   MediaPickerInputVideo({
-    this.label = "Video",
+    this.label = 'Video',
     Widget? icon,
     this.checkPageSettings,
     this.onComplete,

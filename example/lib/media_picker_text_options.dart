@@ -63,7 +63,7 @@ class _MediaPickerTextOptionsState extends ConsumerState<MediaPickerPageTextOpti
                 buttonType: ButtonType.text,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
-                    label: "Make photo",
+                    label: 'Make photo',
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
                       'title': 'Share photo',
@@ -75,7 +75,7 @@ class _MediaPickerTextOptionsState extends ConsumerState<MediaPickerPageTextOpti
                     },
                   ),
                   MediaPickerInputVideo(
-                    label: "Make video",
+                    label: 'Make video',
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
@@ -89,7 +89,7 @@ class _MediaPickerTextOptionsState extends ConsumerState<MediaPickerPageTextOpti
                   ),
                   if (!kIsWeb)
                     MediaPickerInputAudio(
-                      label: "Record audio",
+                      label: 'Record audio',
                       checkPageSettings: {'title': 'Share audio'},
                       onComplete: (MediaResult result) {
                         Navigator.pop(context);
@@ -97,14 +97,14 @@ class _MediaPickerTextOptionsState extends ConsumerState<MediaPickerPageTextOpti
                       audioService: audioService,
                     ),
                   MediaPickerInputText(
-                    label: "Write text",
+                    label: 'Write text',
                     checkPageSettings: {'title': 'Share text'},
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
                     },
                   ),
                   MediaPickerInputFile(
-                    label: "Select file",
+                    label: 'Select file',
                     pickFile: mediaService.pickFile,
                     fileExtensions: [
                       'pdf',

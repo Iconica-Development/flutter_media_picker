@@ -1,10 +1,14 @@
+// SPDX-FileCopyrightText: 2022 Iconica
+//
+// SPDX-License-Identifier: BSD-3-Clause
+
 import 'package:flutter/material.dart';
 
 class IconButtonWithText extends StatelessWidget {
   const IconButtonWithText({
     super.key,
     this.iconSize = 40,
-    this.iconText = "Button",
+    this.iconText = 'Button',
     this.iconTextSize = 16,
     this.icon = Icons.file_copy,
   });

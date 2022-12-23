@@ -2,6 +2,9 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +15,7 @@ import '../../flutter_media_picker.dart';
 /// Input for file used by [MediaPicker].
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
-    this.label = "File",
+    this.label = 'File',
     Widget? icon,
     this.fileExtensions = const ['pdf', 'jpg', 'png'],
     this.checkPageSettings,
@@ -65,9 +68,8 @@ class MediaPickerInputFile implements MediaPickerInput {
         case '.pdf':
         case '.doc':
         case '.docx':
-          return Text(result.fileName!);
         case '.txt':
-          return const DisplayText();
+          return Text(result.fileName!);
         default:
       }
     }

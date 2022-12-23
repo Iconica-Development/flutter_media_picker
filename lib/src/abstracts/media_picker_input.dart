@@ -23,7 +23,7 @@ import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 /// [onComplete] will be called when the user has selected/made the media.
 /// If checkpage is set this method will be called when the [onComplete] is called in the checkPage.
 abstract class MediaPickerInput {
-  String label = "Media Picker input";
+  String label = 'Media Picker input';
 
   Widget icon = const IconButtonWithText();
 
