@@ -17,3 +17,12 @@
 ## 0.1.1
 
 - Updated flutter_form version to 2.0.1
+
+## 0.2.0
+- Added option to select a file
+- Added file_picker package for file picking possibility
+- Added option to use icons instead of text buttons in media picker
+- Added customization options when using icons mode
+    - Icons are customizable
+        - When using standard icon buttons delivered with this package you can set the icon text, icon text size, icon and icon size
+- Translated the example to English
