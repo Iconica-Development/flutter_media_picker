@@ -2,7 +2,8 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-import 'package:example/media_picker.dart';
+import 'package:example/media_picker_icon_options.dart';
+import 'package:example/media_picker_text_options.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -43,23 +44,47 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Media Picker'),
-          onPressed: () {
-            showModalBottomSheet(
-              backgroundColor: Colors.transparent,
-              context: context,
-              builder: (context) {
-                return MediaPickerPage(
-                  callback: () {
-                    Navigator.pop(context);
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: ElevatedButton(
+              child: const Text('Media Picker Text Options'),
+              onPressed: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) {
+                    return MediaPickerPageTextOptions(
+                      callback: () {
+                        Navigator.pop(context);
+                      },
+                    );
                   },
                 );
               },
-            );
-          },
-        ),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              child: const Text('Media Picker Icon Options'),
+              onPressed: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) {
+                    return MediaPickerPageIconOptions(
+                      callback: () {
+                        Navigator.pop(context);
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

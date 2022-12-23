@@ -14,10 +14,11 @@ import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 class MediaPickerInputPhoto implements MediaPickerInput {
   MediaPickerInputPhoto({
     this.label = "Photo",
+    Widget? icon,
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
-  }) : icon = IconButtonWithText(
+  }) : icon = icon ?? IconButtonWithText(
           icon: Icons.camera_alt,
           iconText: label,
         );

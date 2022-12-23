@@ -6,17 +6,17 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
-import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 /// Input for video used by [MediaPicker].
 class MediaPickerInputVideo implements MediaPickerInput {
   MediaPickerInputVideo({
     this.label = "Video",
+    Widget? icon,
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
     required this.videoPlayerFactory,
-  }) : icon = IconButtonWithText(icon: Icons.video_camera_front, iconText: label,);
+  }) : icon = icon ?? IconButtonWithText(icon: Icons.video_camera_front, iconText: label,);
 
   final Future<Uint8List?> Function()? pickFile;
   final VideoPlayerFactory videoPlayerFactory;

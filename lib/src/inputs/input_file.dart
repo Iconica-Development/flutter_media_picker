@@ -4,21 +4,25 @@
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 import 'package:path/path.dart' as path;
 
 import '../../flutter_media_picker.dart';
 
-/// Input for photo used by [MediaPicker].
+/// Input for file used by [MediaPicker].
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
     this.label = "File",
+    Widget? icon,
     this.fileExtensions = const ['pdf', 'jpg', 'png'],
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
-  }) : icon = IconButtonWithText(icon: Icons.file_copy, iconText: label,);
+  }) : icon = icon ??
+            IconButtonWithText(
+              icon: Icons.file_copy,
+              iconText: label,
+            );
 
   final Future<FilePickerResult?> Function(List<String>)? pickFile;
   final List<String> fileExtensions;

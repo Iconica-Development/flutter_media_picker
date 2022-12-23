@@ -7,7 +7,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
-import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -17,14 +16,16 @@ import 'package:intl/intl.dart';
 class MediaPickerInputAudio implements MediaPickerInput {
   MediaPickerInputAudio({
     this.label = "Audio",
+    Widget? icon,
     this.checkPageSettings,
     this.onComplete,
     required this.audioService,
     this.inputStyling,
-  }) : icon = IconButtonWithText(
-          icon: Icons.record_voice_over,
-          iconText: label,
-        );
+  }) : icon = icon ??
+            IconButtonWithText(
+              icon: Icons.record_voice_over,
+              iconText: label,
+            );
 
   final AudioService audioService;
 
