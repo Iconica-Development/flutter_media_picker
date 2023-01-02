@@ -16,16 +16,12 @@ import '../../flutter_media_picker.dart';
 class MediaPickerInputFile implements MediaPickerInput {
   MediaPickerInputFile({
     this.label = 'File',
-    Widget? icon,
+    this.widget,
     this.fileExtensions = const ['pdf', 'jpg', 'png'],
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
-  }) : icon = icon ??
-            IconButtonWithText(
-              icon: Icons.file_copy,
-              iconText: label,
-            );
+  });
 
   final Future<FilePickerResult?> Function(List<String>)? pickFile;
   final List<String> fileExtensions;
@@ -34,7 +30,7 @@ class MediaPickerInputFile implements MediaPickerInput {
   String label;
 
   @override
-  Widget icon;
+  Widget? widget;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
@@ -57,7 +53,6 @@ class MediaPickerInputFile implements MediaPickerInput {
         case '.png':
         case '.jpg':
         case '.jpeg':
-        case '.svg':
         case '.webp':
         case '.bmp':
         case '.gif':

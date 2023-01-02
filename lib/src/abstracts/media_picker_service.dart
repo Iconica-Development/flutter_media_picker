@@ -13,6 +13,6 @@ abstract class MediaPickerService {
   /// Returns [Uint8List] based on given [VideoSource].
   Future<Uint8List?> pickVideoFile();
 
-  /// Returns [Uint8List] based on given [File].
+  /// Returns [FilePickerResult] based on given [File].
   Future<FilePickerResult?> pickFile(List<String> fileExtensions);
 }

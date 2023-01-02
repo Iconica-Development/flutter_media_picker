@@ -16,16 +16,12 @@ import 'package:intl/intl.dart';
 class MediaPickerInputAudio implements MediaPickerInput {
   MediaPickerInputAudio({
     this.label = 'Audio',
-    Widget? icon,
+    this.widget,
     this.checkPageSettings,
     this.onComplete,
     required this.audioService,
     this.inputStyling,
-  }) : icon = icon ??
-            IconButtonWithText(
-              icon: Icons.record_voice_over,
-              iconText: label,
-            );
+  });
 
   final AudioService audioService;
 
@@ -35,7 +31,7 @@ class MediaPickerInputAudio implements MediaPickerInput {
   String label;
 
   @override
-  Widget icon;
+  Widget? widget;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {

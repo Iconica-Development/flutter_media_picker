@@ -5,33 +5,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/enums/button_type.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
-import 'package:flutter_media_picker/src/widgets/icon_button_with_text.dart';
 
 /// Abstract class for inputs used by [MediaPicker].
-///
-/// The [label] is used as the title in the header and under the icon, based on which [ButtonType] you chose.
-///
-/// The [icon] is used as the icon in the iconButton if [ButtonType] is icon.
-///
-/// [onPressed] is called when the user has chosen the input to use.
-///
-/// [displayResult] is used when the checkpage parameter is set for the [MediaPicker].
-/// The widget will be given as [displayResult] within the checkpage parameter.
-///
-/// [checkPageSettings] are some settings that can be set when needed so they can be used in the checkPage.
-///
-/// [onComplete] will be called when the user has selected/made the media.
-/// If checkpage is set this method will be called when the [onComplete] is called in the checkPage.
 abstract class MediaPickerInput {
+  /// The [label] is used as the title in the header and under the icon, based on which [ButtonType] you chose.
   String label = 'Media Picker input';
 
-  Widget icon = const IconButtonWithText();
+  /// The [widget] is the object that is used to show in the media picker where the user can click on.
+  Widget? widget;
 
+  /// [onPressed] is called when the user has chosen the input to use.
   Future<MediaResult> onPressed(BuildContext context);
 
+  /// [displayResult] is used when the checkpage parameter is set for the [MediaPicker].
+  /// The widget will be given as [displayResult] within the checkpage parameter.
   Future<Widget> displayResult(MediaResult result);
 
+  /// [checkPageSettings] are some settings that can be set when needed so they can be used in the checkPage.
   Map<String, dynamic>? checkPageSettings;
 
+  /// [onComplete] will be called when the user has selected/made the media.
+  /// If checkpage is set this method will be called when the [onComplete] is called in the checkPage.
   void Function(MediaResult result)? onComplete;
 }

@@ -1,10 +1,7 @@
 ## 0.2.0
 - Added option to select a file
 - Added file_picker package for file picking possibility
-- Added option to use icons instead of text buttons in media picker
-- Added customization options when using icons mode
-    - Icons are customizable
-        - When using standard icon buttons delivered with this package you can set the icon text, icon text size, icon and icon size
+- Inputs now have widgets so any widget can be used in the media picker now.
 - Translated the example to English
 
 ## 0.1.1
