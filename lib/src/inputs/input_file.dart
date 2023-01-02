@@ -68,8 +68,17 @@ class MediaPickerInputFile implements MediaPickerInput {
         case '.pdf':
         case '.doc':
         case '.docx':
-        case '.txt':
           return Text(result.fileName!);
+        case '.txt':
+          return Column(mainAxisSize: MainAxisSize.min, children: [
+            Text(result.fileName!),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Text(String.fromCharCodes(result.fileValue!)),
+            )
+          ]);
         default:
       }
     }
