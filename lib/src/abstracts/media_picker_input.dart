@@ -3,12 +3,11 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_media_picker/src/enums/button_type.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
 
 /// Abstract class for inputs used by [MediaPicker].
 abstract class MediaPickerInput {
-  /// The [label] is used as the title in the header and under the icon, based on which [ButtonType] you chose.
+  /// The [label] is used as the title for the object in the media picker and no [widget] has been given.
   String label = 'Media Picker input';
 
   /// The [widget] is the object that is used to show in the media picker where the user can click on.

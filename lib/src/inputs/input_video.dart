@@ -20,7 +20,7 @@ class MediaPickerInputVideo implements MediaPickerInput {
 
   final Future<Uint8List?> Function()? pickFile;
   final VideoPlayerFactory videoPlayerFactory;
-  
+
   @override
   Widget? widget;
 

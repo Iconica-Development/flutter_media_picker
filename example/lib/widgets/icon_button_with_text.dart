@@ -20,7 +20,6 @@ class IconButtonWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return FittedBox(
       fit: BoxFit.fitHeight,
       child: Column(
