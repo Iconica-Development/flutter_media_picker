@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Media Picker Example',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const MyHomePage(title: 'Media Picker Example'),
       ),
     );
   }
@@ -45,13 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Media Picker'),
+          child: const Text('Media Picker Text Options'),
           onPressed: () {
             showModalBottomSheet(
               backgroundColor: Colors.transparent,
               context: context,
               builder: (context) {
-                return MediaPickerPage(
+                return MediaPickerExample(
                   callback: () {
                     Navigator.pop(context);
                   },

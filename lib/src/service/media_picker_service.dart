@@ -4,6 +4,7 @@
 
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_service.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,5 +47,20 @@ class MediaPickerFileService implements MediaPickerService {
     await controller.initialize();
     await controller.setLooping(true);
     await controller.play();
+  }
+
+  @override
+  Future<FilePickerResult?> pickFile(List<String> extensions) async {
+    var file = await FilePicker.platform.pickFiles(
+      withData: true,
+      type: FileType.custom,
+      allowedExtensions: extensions,
+    );
+
+    if (file != null) {
+      return file;
+    }
+
+    return Future.value(null);
   }
 }

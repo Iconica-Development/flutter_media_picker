@@ -10,7 +10,8 @@ import 'package:flutter_media_picker/flutter_media_picker.dart';
 /// Input for video used by [MediaPicker].
 class MediaPickerInputVideo implements MediaPickerInput {
   MediaPickerInputVideo({
-    this.label = "Video",
+    this.label = 'Video',
+    this.widget,
     this.checkPageSettings,
     this.onComplete,
     this.pickFile,
@@ -19,6 +20,9 @@ class MediaPickerInputVideo implements MediaPickerInput {
 
   final Future<Uint8List?> Function()? pickFile;
   final VideoPlayerFactory videoPlayerFactory;
+
+  @override
+  Widget? widget;
 
   @override
   String label;

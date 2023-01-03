@@ -12,7 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  path: any
   image_picker: any
+  file_picker: any
   video_player: any
   path_provider: any
   hooks_riverpod: any

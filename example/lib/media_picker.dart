@@ -8,15 +8,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MediaPickerPage extends ConsumerStatefulWidget {
-  const MediaPickerPage({required this.callback, Key? key}) : super(key: key);
+class MediaPickerExample extends ConsumerStatefulWidget {
+  const MediaPickerExample({required this.callback, Key? key})
+      : super(key: key);
   final Function callback;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MediaPickerState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _MediaPickerExampleState();
 }
 
-class _MediaPickerState extends ConsumerState<MediaPickerPage> {
+class _MediaPickerExampleState extends ConsumerState<MediaPickerExample> {
   @override
   Widget build(BuildContext context) {
     var mediaService = ref.read<MediaPickerService>(mediaPickerServiceProvider);
@@ -49,7 +51,7 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                 height: 14,
               ),
               const Text(
-                'Maken',
+                'Create/Pick',
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 20,
@@ -61,9 +63,14 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
               MediaPicker(
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
+                    label: 'Make photo',
+                    // widget: const IconButtonWithText(
+                    //   icon: Icons.photo,
+                    //   iconText: "Make photo",
+                    // ),
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
-                      'title': 'Foto delen',
+                      'title': 'Share photo',
                       'width': 125.0,
                       'height': 200.0,
                     },
@@ -72,10 +79,15 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                     },
                   ),
                   MediaPickerInputVideo(
+                    label: 'Make video',
+                    // widget: const IconButtonWithText(
+                    //   icon: Icons.video_camera_front,
+                    //   iconText: "Make video",
+                    // ),
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
-                      'title': 'Video delen',
+                      'title': 'Share video',
                       'width': 122.5,
                       'height': 200.0,
                     },
@@ -85,14 +97,48 @@ class _MediaPickerState extends ConsumerState<MediaPickerPage> {
                   ),
                   if (!kIsWeb)
                     MediaPickerInputAudio(
-                      checkPageSettings: {'title': 'Audio delen'},
+                      label: 'Record audio',
+                      // widget: const IconButtonWithText(
+                      //   icon: Icons.record_voice_over,
+                      //   iconText: "Record audio",
+                      // ),
+                      checkPageSettings: {'title': 'Share audio'},
                       onComplete: (MediaResult result) {
                         Navigator.pop(context);
                       },
                       audioService: audioService,
                     ),
                   MediaPickerInputText(
-                    checkPageSettings: {'title': 'Tekst delen'},
+                    label: 'Write text',
+                    // widget: const IconButtonWithText(
+                    //   icon: Icons.text_fields,
+                    //   iconText: "Write text",
+                    // ),
+                    checkPageSettings: {'title': 'Share text'},
+                    onComplete: (MediaResult result) {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  MediaPickerInputFile(
+                    label: 'Select file',
+                    // widget: const IconButtonWithText(
+                    //   icon: Icons.file_copy,
+                    //   iconText: "Select file",
+                    // ),
+                    pickFile: mediaService.pickFile,
+                    fileExtensions: [
+                      'pdf',
+                      'doc',
+                      'png',
+                      'jpg',
+                      'docx',
+                      'bmp',
+                      'gif',
+                      'txt',
+                    ],
+                    checkPageSettings: {
+                      'title': 'Share file',
+                    },
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
                     },

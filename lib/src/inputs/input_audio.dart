@@ -12,10 +12,11 @@ import 'package:intl/intl.dart';
 
 /// Input for audio used by [MediaPicker].
 ///
-/// This feature is only usable for nativa applications.
+/// This feature is only usable for native applications.
 class MediaPickerInputAudio implements MediaPickerInput {
   MediaPickerInputAudio({
-    this.label = "Audio",
+    this.label = 'Audio',
+    this.widget,
     this.checkPageSettings,
     this.onComplete,
     required this.audioService,
@@ -30,6 +31,9 @@ class MediaPickerInputAudio implements MediaPickerInput {
   String label;
 
   @override
+  Widget? widget;
+
+  @override
   Future<MediaResult> onPressed(BuildContext context) async {
     MediaResult audio = MediaResult();
 
@@ -42,7 +46,7 @@ class MediaPickerInputAudio implements MediaPickerInput {
             if (content.fileValue != null) {
               audio = content;
             } else {
-              throw Exception("No recording returned");
+              throw Exception('No recording returned');
             }
           },
           inputStyling: inputStyling ?? AudioInputStyling(),

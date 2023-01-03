@@ -1,19 +1,25 @@
-## 0.0.1
+## 0.2.0
+- Added option to select a file
+- Added file_picker package for file picking possibility
+- Inputs now have widgets so any widget can be used in the media picker now.
+- Translated the example to English
 
-- Initial port
+## 0.1.1
 
-## 0.0.2
-
-- Updated flutter_form version
-
-## 0.0.3
-
-- Fixed bug where onTap was not working when header is set
+- Updated flutter_form version to 2.0.1
 
 ## 0.1.0
 
 - Ability to set styling for the audio input.
 
-## 0.1.1
+## 0.0.3
 
-- Updated flutter_form version to 2.0.1
+- Fixed bug where onTap was not working when header is set
+
+## 0.0.2
+
+- Updated flutter_form version
+
+## 0.0.1
+
+- Initial port

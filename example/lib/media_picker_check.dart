@@ -70,7 +70,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                       widget.cancel();
                       formController.autoNextStep();
                     },
-                    child: const Text("Delen"),
+                    child: const Text('Share'),
                   ),
                 ),
               ),
@@ -140,7 +140,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                     ),
                     Expanded(
                       child: FlutterFormInputMultiLine(
-                          hint: "Voeg omschrijving toe...",
+                          hint: 'Add description...',
                           maxCharacters: 300,
                           controller: descriptionController),
                     ),
@@ -149,7 +149,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                     ),
                     FlutterFormInputSwitch(
                       label: const Text(
-                        'Deel op je tijdlijn',
+                        'Share on time line',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
@@ -162,7 +162,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                     ),
                     FlutterFormInputSwitch(
                       label: const Text(
-                        'Bewaar in de kluis',
+                        'Save in vault',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
