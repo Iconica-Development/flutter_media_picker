@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: 2022 Iconica
 //
 // SPDX-License-Identifier: BSD-3-Clause
-
 import 'dart:typed_data';
 
 /// MediaResult is a model that is used to return the media selected/media with the [MediaPicker].
@@ -10,7 +9,7 @@ class MediaResult {
     this.textValue,
     this.fileValue,
     this.checkPageResults,
-    this.fileType,
+    this.mimeType,
     this.fileName,
   });
 
@@ -24,9 +23,9 @@ class MediaResult {
   /// Returns the values from the checkPageResults if checkpage is set.
   final Map<String, dynamic>? checkPageResults;
 
-  /// Returns the filetype when a file is selected with the FilePicker.
-  final String? fileType;
+  /// Returns the mime type of the file.
+  String? mimeType;
 
   /// Returns the file name when a file is selected with the FilePicker.
-  final String? fileName;
+  String? fileName;
 }

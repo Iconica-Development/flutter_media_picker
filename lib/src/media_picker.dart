@@ -101,7 +101,7 @@ import '../flutter_media_picker.dart';
 /// );
 ///```
 
-class MediaPicker extends ConsumerWidget {
+class MediaPicker extends ConsumerStatefulWidget {
   const MediaPicker({
     this.mediaPickerInputs,
     this.inputsDirection = Axis.horizontal,
@@ -123,7 +123,14 @@ class MediaPicker extends ConsumerWidget {
       Function(Map<String, dynamic> results) onComplete)? mediaCheckPage;
 
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _MediaPickerState();
+}
+
+class _MediaPickerState extends ConsumerState<MediaPicker> {
+  bool _isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
     List<MediaPickerInput> inputs = [
       MediaPickerInputPhoto(),
       MediaPickerInputVideo(
@@ -135,49 +142,64 @@ class MediaPicker extends ConsumerWidget {
         ),
     ];
 
-    if (mediaPickerInputs != null) {
-      inputs = mediaPickerInputs!;
+    if (widget.mediaPickerInputs != null) {
+      inputs = widget.mediaPickerInputs!;
     }
+
+    var theme = Theme.of(context);
 
     return Wrap(
       alignment: WrapAlignment.center,
-      direction: inputsDirection,
-      spacing: horizontalSpacing,
-      runSpacing: verticalSpacing,
+      direction: widget.inputsDirection,
+      spacing: widget.horizontalSpacing,
+      runSpacing: widget.verticalSpacing,
       children: [
-        for (final input in inputs) ...[
-          GestureDetector(
-            onTap: () async {
-              await onPressedMediaType(context, input);
-            },
-            child: Wrap(
-              children: [
-                input.widget ??
-                    Container(
-                      height: 55,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Color(0xFF979797),
-                            width: 1,
-                          ),
-                        ),
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: Text(
-                            input.label,
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ),
-                      ),
-                    ),
-              ],
+        if (_isLoading) ...[
+          SizedBox(
+            height: 150,
+            width: 150,
+            child: CircularProgressIndicator(
+              color: theme.primaryColor,
             ),
           ),
+        ] else ...[
+          for (final input in inputs) ...[
+            GestureDetector(
+              onTap: () async {
+                setState(() {
+                  _isLoading = true;
+                });
+                await onPressedMediaType(context, input);
+              },
+              child: Wrap(
+                children: [
+                  input.widget ??
+                      Container(
+                        height: 55,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Color(0xFF979797),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text(
+                              input.label,
+                              style: theme.textTheme.headline6,
+                            ),
+                          ),
+                        ),
+                      ),
+                ],
+              ),
+            ),
+          ]
         ]
       ],
     );
@@ -187,16 +209,16 @@ class MediaPicker extends ConsumerWidget {
       BuildContext context, MediaPickerInput input) async {
     MediaResult content = await input.onPressed(context);
 
-    if (mediaCheckPage != null &&
+    if (widget.mediaCheckPage != null &&
         (input.runtimeType == MediaPickerInputText || _hasContent(content))) {
-      var checkPage = mediaCheckPage!(
+      var checkPage = widget.mediaCheckPage!(
         await input.displayResult(content),
         input.checkPageSettings,
         (Map<String, dynamic> results) {
           MediaResult result = MediaResult(
             fileValue: content.fileValue,
             textValue: content.textValue,
-            fileType: content.fileType,
+            mimeType: content.mimeType,
             checkPageResults: results,
           );
 
@@ -204,8 +226,8 @@ class MediaPicker extends ConsumerWidget {
             input.onComplete!(result);
           }
 
-          if (onComplete != null) {
-            onComplete!(result);
+          if (widget.onComplete != null) {
+            widget.onComplete!(result);
           }
         },
       );
@@ -222,8 +244,8 @@ class MediaPicker extends ConsumerWidget {
         input.onComplete!(content);
       }
 
-      if (onComplete != null) {
-        onComplete!(content);
+      if (widget.onComplete != null) {
+        widget.onComplete!(content);
       }
     }
   }

@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: ElevatedButton(
-          child: const Text('Media Picker Text Options'),
+          child: const Text('Media Picker'),
           onPressed: () {
             showModalBottomSheet(
               backgroundColor: Colors.transparent,

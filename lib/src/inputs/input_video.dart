@@ -6,6 +6,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
+import 'package:mime/mime.dart';
 
 /// Input for video used by [MediaPicker].
 class MediaPickerInputVideo implements MediaPickerInput {
@@ -18,7 +19,7 @@ class MediaPickerInputVideo implements MediaPickerInput {
     required this.videoPlayerFactory,
   });
 
-  final Future<Uint8List?> Function()? pickFile;
+  final Future<MediaResult?> Function()? pickFile;
   final VideoPlayerFactory videoPlayerFactory;
 
   @override
@@ -29,12 +30,16 @@ class MediaPickerInputVideo implements MediaPickerInput {
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
-    var image = await pickFile?.call();
+    var video = await pickFile?.call();
 
-    if (image != null && image.isNotEmpty) {
-      return MediaResult(
-        fileValue: image,
-      );
+    if (video != null) {
+      if (video.mimeType == null || video.mimeType!.isEmpty) {
+        video.mimeType = lookupMimeType(
+          video.fileName!,
+          headerBytes: video.fileValue,
+        );
+      }
+      return video;
     }
 
     return MediaResult();

@@ -135,9 +135,12 @@ class _MediaPickerExampleState extends ConsumerState<MediaPickerExample> {
                       'bmp',
                       'gif',
                       'txt',
+                      'mp4',
+                      'mp3',
                     ],
                     checkPageSettings: {
                       'title': 'Share file',
+                      'height': 200.0,
                     },
                     onComplete: (MediaResult result) {
                       Navigator.pop(context);
