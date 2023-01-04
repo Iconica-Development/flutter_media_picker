@@ -25,7 +25,7 @@ class MediaPickerInputText implements MediaPickerInput {
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
-    return MediaResult();
+    return MediaResult(mimeType: 'plain/text');
   }
 
   @override
@@ -56,7 +56,7 @@ class _DisplayTextState extends ConsumerState<DisplayText> {
   @override
   Widget build(BuildContext context) {
     return FlutterFormInputPlainText(
-      label: const Text('Titel'),
+      label: const Text('Title'),
       controller: _controller,
     );
   }

@@ -44,6 +44,7 @@ class MediaPickerInputAudio implements MediaPickerInput {
           audioService: audioService,
           onComplete: (MediaResult content) {
             if (content.fileValue != null) {
+              content.mimeType = 'audio/mpeg';
               audio = content;
             } else {
               throw Exception('No recording returned');
@@ -61,7 +62,17 @@ class MediaPickerInputAudio implements MediaPickerInput {
   Future<Widget> displayResult(MediaResult result) async {
     var data = result.fileValue;
     if (data != null) {
-      audioService.playAudio(data);
+      Column(
+        children: [
+          if (result.fileName != null) ...[
+            Text(result.fileName!),
+          ],
+          ElevatedButton(
+            onPressed: () => audioService.playAudio(data),
+            child: const Text("Play audio"),
+          ),
+        ],
+      );
     }
 
     return Container();

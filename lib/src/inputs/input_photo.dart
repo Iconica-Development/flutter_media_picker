@@ -1,13 +1,11 @@
 // SPDX-FileCopyrightText: 2022 Iconica
 //
 // SPDX-License-Identifier: BSD-3-Clause
-
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 
 import 'package:flutter_media_picker/src/media_result.dart';
+import 'package:mime/mime.dart';
 
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputPhoto implements MediaPickerInput {
@@ -19,7 +17,7 @@ class MediaPickerInputPhoto implements MediaPickerInput {
     this.pickFile,
   });
 
-  final Future<Uint8List?> Function()? pickFile;
+  final Future<MediaResult?> Function()? pickFile;
 
   @override
   String label;
@@ -31,10 +29,14 @@ class MediaPickerInputPhoto implements MediaPickerInput {
   Future<MediaResult> onPressed(BuildContext context) async {
     var image = await pickFile?.call();
 
-    if (image != null && image.isNotEmpty) {
-      return MediaResult(
-        fileValue: image,
-      );
+    if (image != null) {
+      if (image.mimeType == null || image.mimeType!.isEmpty) {
+        image.mimeType = lookupMimeType(
+          image.fileName!,
+          headerBytes: image.fileValue,
+        );
+      }
+      return image;
     }
     return MediaResult();
   }

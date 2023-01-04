@@ -1,4 +1,12 @@
+## 0.3.0
+
+- Added mimeType to MediaPickerResult.
+- Made mimeType and fileName parameters of MediaPickerResult public so they can be changed if wanted.
+- Removed fileType from MediaPickerResult since fileName already includes it.
+- Added audio play button on result page so it doesn't play automatically anymore.
+
 ## 0.2.0
+
 - Added option to select a file
 - Added file_picker package for file picking possibility
 - Inputs now have widgets so any widget can be used in the media picker now.

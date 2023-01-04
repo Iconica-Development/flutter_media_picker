@@ -1,6 +1,6 @@
 name: flutter_media_picker
 description: A new Flutter package project.
-version: 0.0.1
+version: 0.3.0
 homepage: https://github.com/Iconica-Development/flutter_media_picker
 publish_to: "none"
 
@@ -26,6 +26,7 @@ dependencies:
     git:
       url: https://github.com/Iconica-Development/flutter_form.git
       ref: 2.0.1
+  mime: ^1.0.3
 
 dev_dependencies:
   flutter_test:

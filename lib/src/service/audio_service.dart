@@ -59,7 +59,7 @@ class MediaPickerAudioService implements AudioService {
     _recorder.closeRecorder();
     _player.openPlayer();
     _player.startPlayer(
-      fromURI: _directory!.path,
+      fromDataBuffer: audio,
     );
   }
 }
