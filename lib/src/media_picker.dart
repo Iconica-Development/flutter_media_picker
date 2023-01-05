@@ -109,6 +109,7 @@ class MediaPicker extends ConsumerStatefulWidget {
     this.mediaCheckPage,
     this.horizontalSpacing = 0,
     this.verticalSpacing = 0,
+    this.loadingIconColor,
     Key? key,
   }) : super(key: key);
 
@@ -117,6 +118,7 @@ class MediaPicker extends ConsumerStatefulWidget {
   final Axis inputsDirection;
   final double horizontalSpacing;
   final double verticalSpacing;
+  final Color? loadingIconColor;
   final Widget Function(
       Widget displayResult,
       Map<String, dynamic>? inputSettings,
@@ -159,7 +161,7 @@ class _MediaPickerState extends ConsumerState<MediaPicker> {
             height: 150,
             width: 150,
             child: CircularProgressIndicator(
-              color: theme.primaryColor,
+              color: widget.loadingIconColor ?? theme.primaryColor,
             ),
           ),
         ] else ...[
