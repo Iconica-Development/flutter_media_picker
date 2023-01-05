@@ -61,6 +61,7 @@ class _MediaPickerExampleState extends ConsumerState<MediaPickerExample> {
                 height: 15,
               ),
               MediaPicker(
+                loadingIconColor: Theme.of(context).colorScheme.secondary,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
                     label: 'Make photo',

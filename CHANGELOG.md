@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Added feature change the loading icon color.
+
 ## 0.3.0
 
 - Added mimeType to MediaPickerResult.
