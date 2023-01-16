@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Fixed an incorrect import on web
+
 ## 0.3.1
 
 - Added feature change the loading icon color.
