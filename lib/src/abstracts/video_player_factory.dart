@@ -7,7 +7,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/video_player/video_player_native.dart'
-    if (dart.library.html) 'package:media_picker/video_player/video_player_web.dart'
+    if (dart.library.html) 'package:flutter_media_picker/video_player/video_player_web.dart'
     as vp;
 import 'package:video_player/video_player.dart';
 
