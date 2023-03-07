@@ -158,8 +158,9 @@ class _RecorderState extends ConsumerState<Recorder> {
                         height: 15,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Spacer(),
+                          widget.inputStyling.leftButton ?? const SizedBox(),
                           widget.inputStyling.playButton?.call(
                                 recording,
                                 playOnTap,
@@ -329,6 +330,7 @@ class AudioInputStyling {
     this.timeTextStyle,
     this.playButton,
     this.nextButton,
+    this.leftButton,
   });
 
   /// background can be set to determine the background of the page.
@@ -345,6 +347,9 @@ class AudioInputStyling {
 
   /// nextButton changes the default next/finish button.
   final Widget Function(bool recording, Function onTap)? nextButton;
+
+  /// leftButton is an extra button that can be filled in.
+  final Widget? leftButton;
 }
 
 /// Generic clock class can be created and used to keep the time.
