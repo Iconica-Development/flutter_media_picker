@@ -1,3 +1,6 @@
+## 0.3.3
+
+- Added optional left button on audio picker
 ## 0.3.2
 
 - Fixed an incorrect import on web
