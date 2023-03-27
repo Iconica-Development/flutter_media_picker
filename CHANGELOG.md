@@ -1,3 +1,7 @@
+## 0.3.5
+
+- Fixed left button
+
 ## 0.3.4
 
 - Fixed audio recording that would start without permissions
