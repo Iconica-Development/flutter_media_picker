@@ -104,9 +104,27 @@ class _MediaPickerExampleState extends ConsumerState<MediaPickerExample> {
                       //   iconText: "Record audio",
                       // ),
                       checkPageSettings: {'title': 'Share audio'},
-                      onComplete: (MediaResult result) {
-                        Navigator.pop(context);
-                      },
+                      onComplete: (MediaResult result) =>
+                          Navigator.pop(context),
+                      inputStyling: AudioInputStyling(
+                        leftButton: (_, __) => GestureDetector(
+                          onTap: () async => Navigator.pop(context),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFD8D8D8),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Back',
+                                style: Theme.of(context).textTheme.button,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       audioService: audioService,
                     ),
                   MediaPickerInputText(

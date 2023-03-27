@@ -160,7 +160,15 @@ class _RecorderState extends ConsumerState<Recorder> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          widget.inputStyling.leftButton ?? const SizedBox(),
+                          Expanded(
+                            child: Center(
+                              child: widget.inputStyling.leftButton?.call(
+                                    recording,
+                                    nextOnTap,
+                                  ) ??
+                                  const SizedBox(),
+                            ),
+                          ),
                           widget.inputStyling.playButton?.call(
                                 recording,
                                 playOnTap,
@@ -351,7 +359,7 @@ class AudioInputStyling {
   final Widget Function(bool recording, Function onTap)? nextButton;
 
   /// leftButton is an extra button that can be filled in.
-  final Widget? leftButton;
+  final Widget Function(bool recording, Function onTap)? leftButton;
 }
 
 /// Generic clock class can be created and used to keep the time.
