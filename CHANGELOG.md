@@ -1,3 +1,7 @@
+## 0.3.4
+
+- Fixed audio recording that would start without permissions
+
 ## 0.3.3
 
 - Added optional left button on audio picker

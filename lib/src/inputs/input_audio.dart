@@ -278,7 +278,7 @@ class _RecorderState extends ConsumerState<Recorder> {
     );
   }
 
-  playOnTap() {
+  playOnTap() async {
     if (recording) {
       widget.audioService.recordStop();
 
@@ -288,13 +288,15 @@ class _RecorderState extends ConsumerState<Recorder> {
         recording = false;
       });
     } else {
-      widget.audioService.recordStart();
+      try {
+        await widget.audioService.recordStart();
+        clock.startClock();
 
-      clock.startClock();
-
-      setState(() {
-        recording = true;
-      });
+        setState(() {
+          recording = true;
+        });
+        // ignore: empty_catches
+      } catch (e) {}
     }
   }
 
