@@ -192,7 +192,7 @@ class _MediaPickerState extends State<MediaPicker> {
                             padding: const EdgeInsets.only(left: 15),
                             child: Text(
                               input.label,
-                              style: theme.textTheme.headline6,
+                              style: theme.textTheme.titleLarge,
                             ),
                           ),
                         ),

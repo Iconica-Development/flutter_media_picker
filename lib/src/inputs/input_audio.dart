@@ -149,7 +149,7 @@ class _RecorderState extends State<Recorder> {
                               ),
                             ),
                             style: widget.inputStyling.timeTextStyle ??
-                                Theme.of(context).textTheme.headline5,
+                                Theme.of(context).textTheme.headlineSmall,
                           );
                         },
                       ),
