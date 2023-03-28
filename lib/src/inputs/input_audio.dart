@@ -7,7 +7,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
 /// Input for audio used by [MediaPicker].
@@ -85,7 +84,7 @@ class MediaPickerInputAudio implements MediaPickerInput {
   void Function(MediaResult value)? onComplete;
 }
 
-class Recorder extends ConsumerStatefulWidget {
+class Recorder extends StatefulWidget {
   const Recorder({
     required this.onComplete,
     required this.audioService,
@@ -99,10 +98,10 @@ class Recorder extends ConsumerStatefulWidget {
   final AudioInputStyling inputStyling;
 
   @override
-  ConsumerState<Recorder> createState() => _RecorderState();
+  State<Recorder> createState() => _RecorderState();
 }
 
-class _RecorderState extends ConsumerState<Recorder> {
+class _RecorderState extends State<Recorder> {
   final Clock clock = Clock();
   String? directory;
 
@@ -150,7 +149,7 @@ class _RecorderState extends ConsumerState<Recorder> {
                               ),
                             ),
                             style: widget.inputStyling.timeTextStyle ??
-                                Theme.of(context).textTheme.headline5,
+                                Theme.of(context).textTheme.headlineSmall,
                           );
                         },
                       ),
@@ -261,7 +260,7 @@ class _RecorderState extends ConsumerState<Recorder> {
                                             'Next',
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .button,
+                                                .labelLarge,
                                           ),
                                         ),
                                       ),

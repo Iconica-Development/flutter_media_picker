@@ -9,18 +9,3 @@ export './src/inputs/inputs.dart';
 export './src/service/services.dart';
 export './src/media_result.dart';
 export './src/media_picker.dart';
-
-import 'package:flutter_media_picker/flutter_media_picker.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-final mediaPickerServiceProvider = Provider<MediaPickerService>(
-  (ref) => MediaPickerFileService(),
-);
-
-final videoFactoryProvider = Provider<VideoPlayerFactory>(
-  (ref) => MediaPickerVideoPlayerFactory(),
-);
-
-final audioPlayerServiceProvider = Provider<AudioService>(
-  (ref) => MediaPickerAudioService(),
-);

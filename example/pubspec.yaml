@@ -32,11 +32,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hooks_riverpod : any
-  flutter_form:
+  flutter_form_wizard:
     git:
-      url: https://github.com/Iconica-Development/flutter_form.git
-      ref: 2.0.1
+      url: https://github.com/Iconica-Development/flutter_form_wizard.git
+      ref: 6.0.0
   flutter_media_picker: 
     path: ../
 

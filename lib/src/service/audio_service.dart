@@ -13,7 +13,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class MediaPickerAudioService implements AudioService {
   final FlutterSoundRecorder _recorder = FlutterSoundRecorder(
-    logLevel: Level.nothing,
+    logLevel: Level.debug,
   );
   final FlutterSoundPlayer _player = FlutterSoundPlayer(
     logLevel: Level.nothing,

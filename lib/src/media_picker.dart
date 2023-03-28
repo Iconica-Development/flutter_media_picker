@@ -4,7 +4,6 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../flutter_media_picker.dart';
 
 /// [MediaPicker] is a widget that allows the user to select/make media from a variety of sources.
@@ -101,7 +100,7 @@ import '../flutter_media_picker.dart';
 /// );
 ///```
 
-class MediaPicker extends ConsumerStatefulWidget {
+class MediaPicker extends StatefulWidget {
   const MediaPicker({
     this.mediaPickerInputs,
     this.inputsDirection = Axis.horizontal,
@@ -125,10 +124,10 @@ class MediaPicker extends ConsumerStatefulWidget {
       Function(Map<String, dynamic> results) onComplete)? mediaCheckPage;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MediaPickerState();
+  State<StatefulWidget> createState() => _MediaPickerState();
 }
 
-class _MediaPickerState extends ConsumerState<MediaPicker> {
+class _MediaPickerState extends State<MediaPicker> {
   bool _isLoading = false;
 
   @override
@@ -136,11 +135,11 @@ class _MediaPickerState extends ConsumerState<MediaPicker> {
     List<MediaPickerInput> inputs = [
       MediaPickerInputPhoto(),
       MediaPickerInputVideo(
-        videoPlayerFactory: ref.read(videoFactoryProvider),
+        videoPlayerFactory: MediaPickerVideoPlayerFactory(),
       ),
       if (!kIsWeb)
         MediaPickerInputAudio(
-          audioService: ref.read(audioPlayerServiceProvider),
+          audioService: MediaPickerAudioService(),
         ),
     ];
 
@@ -193,7 +192,7 @@ class _MediaPickerState extends ConsumerState<MediaPicker> {
                             padding: const EdgeInsets.only(left: 15),
                             child: Text(
                               input.label,
-                              style: theme.textTheme.headline6,
+                              style: theme.textTheme.titleLarge,
                             ),
                           ),
                         ),

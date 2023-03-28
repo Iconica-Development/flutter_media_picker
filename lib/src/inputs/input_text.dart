@@ -3,10 +3,9 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:flutter/material.dart';
-import 'package:flutter_form/flutter_form.dart';
+import 'package:flutter_form_wizard/flutter_form.dart';
 import 'package:flutter_media_picker/src/abstracts/media_picker_input.dart';
 import 'package:flutter_media_picker/src/media_result.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Input for text used by [MediaPicker].
 class MediaPickerInputText implements MediaPickerInput {
@@ -40,14 +39,14 @@ class MediaPickerInputText implements MediaPickerInput {
   void Function(MediaResult value)? onComplete;
 }
 
-class DisplayText extends ConsumerStatefulWidget {
+class DisplayText extends StatefulWidget {
   const DisplayText({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _DisplayTextState();
+  State<StatefulWidget> createState() => _DisplayTextState();
 }
 
-class _DisplayTextState extends ConsumerState<DisplayText> {
+class _DisplayTextState extends State<DisplayText> {
   final FlutterFormInputController<String> _controller =
       FlutterFormInputPlainTextController(
     id: 'title',

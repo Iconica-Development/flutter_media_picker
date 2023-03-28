@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Bump `flutter_form_wizard` to version 6.0.0
+- Remove unnecessary `riverpod` dependency
 ## 0.3.5
 
 - Fixed left button

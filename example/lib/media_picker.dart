@@ -6,23 +6,21 @@ import 'package:example/media_picker_check.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MediaPickerExample extends ConsumerStatefulWidget {
+class MediaPickerExample extends StatefulWidget {
   const MediaPickerExample({required this.callback, Key? key})
       : super(key: key);
   final Function callback;
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _MediaPickerExampleState();
+  State<StatefulWidget> createState() => _MediaPickerExampleState();
 }
 
-class _MediaPickerExampleState extends ConsumerState<MediaPickerExample> {
+class _MediaPickerExampleState extends State<MediaPickerExample> {
   @override
   Widget build(BuildContext context) {
-    var mediaService = ref.read<MediaPickerService>(mediaPickerServiceProvider);
-    var audioService = ref.read<AudioService>(audioPlayerServiceProvider);
+    var mediaService = MediaPickerFileService();
+    var audioService = MediaPickerAudioService();
     return Wrap(
       children: [
         Container(
