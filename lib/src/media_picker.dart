@@ -168,78 +168,10 @@ class _MediaPickerState extends State<MediaPicker> {
           for (final input in inputs) ...[
             if (widget.disabledPickers!.contains(input.label) == true) ...[
               IgnorePointer(
-                child: GestureDetector(
-                  onTap: () async {
-                    setState(() {
-                      _isLoading = true;
-                    });
-                    await onPressedMediaType(context, input);
-                  },
-                  child: Wrap(
-                    children: [
-                      input.widget ??
-                          Container(
-                            height: 55,
-                            width: MediaQuery.of(context).size.width * 0.9,
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Color(0xFF979797),
-                                  width: 1,
-                                ),
-                              ),
-                            ),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 15),
-                                child: Text(
-                                  input.label,
-                                  style: theme.textTheme.titleLarge,
-                                ),
-                              ),
-                            ),
-                          ),
-                    ],
-                  ),
-                ),
-              ),
+                child: gestureDetectorWidget(input, theme),
+              )
             ] else ...[
-              GestureDetector(
-                onTap: () async {
-                  setState(() {
-                    _isLoading = true;
-                  });
-                  await onPressedMediaType(context, input);
-                },
-                child: Wrap(
-                  children: [
-                    input.widget ??
-                        Container(
-                          height: 55,
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Color(0xFF979797),
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Text(
-                                input.label,
-                                style: theme.textTheme.titleLarge,
-                              ),
-                            ),
-                          ),
-                        ),
-                  ],
-                ),
-              ),
+              gestureDetectorWidget(input, theme),
             ],
           ]
         ]
@@ -294,5 +226,43 @@ class _MediaPickerState extends State<MediaPicker> {
 
   bool _hasContent(MediaResult content) {
     return content.fileValue != null || content.textValue != null;
+  }
+
+  Widget gestureDetectorWidget(MediaPickerInput input, ThemeData theme) {
+    return GestureDetector(
+      onTap: () async {
+        setState(() {
+          _isLoading = true;
+        });
+        await onPressedMediaType(context, input);
+      },
+      child: Wrap(
+        children: [
+          input.widget ??
+              Container(
+                height: 55,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xFF979797),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: Text(
+                      input.label,
+                      style: theme.textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+              ),
+        ],
+      ),
+    );
   }
 }
