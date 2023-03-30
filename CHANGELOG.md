@@ -1,7 +1,12 @@
+## 0.5.0
+
+- added the ability to disable certain pickers in the code
+
 ## 0.4.0
 
 - Bump `flutter_form_wizard` to version 6.0.0
 - Remove unnecessary `riverpod` dependency
+
 ## 0.3.5
 
 - Fixed left button
@@ -13,6 +18,7 @@
 ## 0.3.3
 
 - Added optional left button on audio picker
+
 ## 0.3.2
 
 - Fixed an incorrect import on web
