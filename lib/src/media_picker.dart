@@ -109,6 +109,7 @@ class MediaPicker extends StatefulWidget {
     this.horizontalSpacing = 0,
     this.verticalSpacing = 0,
     this.loadingIconColor,
+    this.disabledPickers,
     Key? key,
   }) : super(key: key);
 
@@ -118,6 +119,7 @@ class MediaPicker extends StatefulWidget {
   final double horizontalSpacing;
   final double verticalSpacing;
   final Color? loadingIconColor;
+  final List<String>? disabledPickers;
   final Widget Function(
       Widget displayResult,
       Map<String, dynamic>? inputSettings,
@@ -148,7 +150,6 @@ class _MediaPickerState extends State<MediaPicker> {
     }
 
     var theme = Theme.of(context);
-
     return Wrap(
       alignment: WrapAlignment.center,
       direction: widget.inputsDirection,
@@ -165,41 +166,13 @@ class _MediaPickerState extends State<MediaPicker> {
           ),
         ] else ...[
           for (final input in inputs) ...[
-            GestureDetector(
-              onTap: () async {
-                setState(() {
-                  _isLoading = true;
-                });
-                await onPressedMediaType(context, input);
-              },
-              child: Wrap(
-                children: [
-                  input.widget ??
-                      Container(
-                        height: 55,
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Color(0xFF979797),
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              input.label,
-                              style: theme.textTheme.titleLarge,
-                            ),
-                          ),
-                        ),
-                      ),
-                ],
-              ),
-            ),
+            if (widget.disabledPickers!.contains(input.label) == true) ...[
+              IgnorePointer(
+                child: gestureDetectorWidget(input, theme),
+              )
+            ] else ...[
+              gestureDetectorWidget(input, theme),
+            ],
           ]
         ]
       ],
@@ -253,5 +226,43 @@ class _MediaPickerState extends State<MediaPicker> {
 
   bool _hasContent(MediaResult content) {
     return content.fileValue != null || content.textValue != null;
+  }
+
+  Widget gestureDetectorWidget(MediaPickerInput input, ThemeData theme) {
+    return GestureDetector(
+      onTap: () async {
+        setState(() {
+          _isLoading = true;
+        });
+        await onPressedMediaType(context, input);
+      },
+      child: Wrap(
+        children: [
+          input.widget ??
+              Container(
+                height: 55,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xFF979797),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: Text(
+                      input.label,
+                      style: theme.textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+              ),
+        ],
+      ),
+    );
   }
 }
