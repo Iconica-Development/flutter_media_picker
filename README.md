@@ -1,6 +1,9 @@
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 
-Flutter package which adds a dialog to pick various types of media
+# Flutter Media Picker
+Flutter package which adds a dialog to pick various types of media.
+
+![Media Picker GIF](flutter_media_picker.gif)
 
 ## Setup
 
