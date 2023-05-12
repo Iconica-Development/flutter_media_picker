@@ -117,7 +117,7 @@ class _MediaPickerExampleState extends State<MediaPickerExample> {
                             child: Center(
                               child: Text(
                                 'Back',
-                                style: Theme.of(context).textTheme.button,
+                                style: Theme.of(context).textTheme.labelLarge,
                               ),
                             ),
                           ),
