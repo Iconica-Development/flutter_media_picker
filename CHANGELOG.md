@@ -1,6 +1,9 @@
+## 0.6.0
+- Made compatible with flutter 3.10 
+
 ## 0.5.0
 
-- added the ability to disable certain pickers in the code
+- Added the ability to disable certain pickers in the code
 
 ## 0.4.0
 
