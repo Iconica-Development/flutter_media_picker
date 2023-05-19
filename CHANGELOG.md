@@ -1,5 +1,10 @@
+## 0.6.1
+
+- Gave disabledPickers a default value to stop null errors.
+
 ## 0.6.0
-- Made compatible with flutter 3.10 
+
+- Made compatible with flutter 3.10
 
 ## 0.5.0
 

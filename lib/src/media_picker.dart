@@ -109,7 +109,7 @@ class MediaPicker extends StatefulWidget {
     this.horizontalSpacing = 0,
     this.verticalSpacing = 0,
     this.loadingIconColor,
-    this.disabledPickers,
+    this.disabledPickers = const [],
     Key? key,
   }) : super(key: key);
 
