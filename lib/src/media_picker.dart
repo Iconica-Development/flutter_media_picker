@@ -145,9 +145,7 @@ class _MediaPickerState extends State<MediaPicker> {
         ),
     ];
 
-    if (widget.mediaPickerInputs != null) {
-      inputs = widget.mediaPickerInputs!;
-    }
+    inputs = widget.mediaPickerInputs ?? inputs;
 
     var theme = Theme.of(context);
     return Wrap(
@@ -166,7 +164,7 @@ class _MediaPickerState extends State<MediaPicker> {
           ),
         ] else ...[
           for (final input in inputs) ...[
-            if (widget.disabledPickers!.contains(input.label) == true) ...[
+            if (isInputDisabled(input)) ...[
               IgnorePointer(
                 child: gestureDetectorWidget(input, theme),
               )
@@ -177,6 +175,10 @@ class _MediaPickerState extends State<MediaPicker> {
         ]
       ],
     );
+  }
+
+  bool isInputDisabled(MediaPickerInput input) {
+    return widget.disabledPickers?.contains(input.label) ?? false;
   }
 
   Future<void> onPressedMediaType(
