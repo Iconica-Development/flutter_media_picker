@@ -1,3 +1,7 @@
+## 0.6.2
+
+- Remove null check operator for disabledPickers and perform appropriate null check
+
 ## 0.6.1
 
 - Gave disabledPickers a default value to stop null errors.
