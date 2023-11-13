@@ -12,12 +12,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class MediaPickerAudioService implements AudioService {
-  final FlutterSoundRecorder _recorder = FlutterSoundRecorder(
-    logLevel: Level.debug,
-  );
-  final FlutterSoundPlayer _player = FlutterSoundPlayer(
-    logLevel: Level.nothing,
-  );
+  late FlutterSoundRecorder _recorder;
+  late FlutterSoundPlayer _player;
+
   Directory? _directory;
 
   @override
@@ -36,6 +33,10 @@ class MediaPickerAudioService implements AudioService {
     if (status != PermissionStatus.granted) {
       throw RecordingPermissionException('Microphone permission not granted');
     }
+
+    _recorder = FlutterSoundRecorder(
+      logLevel: Level.debug,
+    );
 
     _recorder.openRecorder();
     if (_recorder.isRecording) {
@@ -56,6 +57,9 @@ class MediaPickerAudioService implements AudioService {
 
   @override
   void playAudio(Uint8List audio) {
+    _player = FlutterSoundPlayer(
+      logLevel: Level.debug,
+    );
     _recorder.closeRecorder();
     _player.openPlayer();
     _player.startPlayer(

@@ -12,6 +12,6 @@ class VideoPlayerWrapper {
   Future<VideoPlayerController> getController(Uint8List video) async {
     final blob = Blob([video]);
     final url = Url.createObjectUrlFromBlob(blob);
-    return VideoPlayerController.network(url);
+    return VideoPlayerController.networkUrl(Uri.parse(url));
   }
 }
