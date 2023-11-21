@@ -104,6 +104,7 @@ class MediaPicker extends StatefulWidget {
   const MediaPicker({
     this.mediaPickerInputs,
     this.inputsDirection = Axis.horizontal,
+    this.indiviualWidgetWidth,
     this.onComplete,
     this.mediaCheckPage,
     this.horizontalSpacing = 0,
@@ -115,6 +116,7 @@ class MediaPicker extends StatefulWidget {
 
   final List<MediaPickerInput>? mediaPickerInputs;
   final void Function(MediaResult result)? onComplete;
+  final double? indiviualWidgetWidth;
   final Axis inputsDirection;
   final double horizontalSpacing;
   final double verticalSpacing;
@@ -166,10 +168,18 @@ class _MediaPickerState extends State<MediaPicker> {
           for (final input in inputs) ...[
             if (isInputDisabled(input)) ...[
               IgnorePointer(
-                child: gestureDetectorWidget(input, theme),
+                child: gestureDetectorWidget(
+                    input,
+                    theme,
+                    widget.indiviualWidgetWidth ??
+                        MediaQuery.of(context).size.width / 2),
               )
             ] else ...[
-              gestureDetectorWidget(input, theme),
+              gestureDetectorWidget(
+                  input,
+                  theme,
+                  widget.indiviualWidgetWidth ??
+                      MediaQuery.of(context).size.width / 2),
             ],
           ]
         ]
@@ -230,7 +240,11 @@ class _MediaPickerState extends State<MediaPicker> {
     return content.fileValue != null || content.textValue != null;
   }
 
-  Widget gestureDetectorWidget(MediaPickerInput input, ThemeData theme) {
+  Widget gestureDetectorWidget(
+    MediaPickerInput input,
+    ThemeData theme,
+    double width,
+  ) {
     return GestureDetector(
       onTap: () async {
         setState(() {
@@ -240,29 +254,36 @@ class _MediaPickerState extends State<MediaPicker> {
       },
       child: Wrap(
         children: [
-          input.widget ??
-              Container(
-                height: 55,
-                width: MediaQuery.of(context).size.width * 0.9,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Color(0xFF979797),
-                      width: 1,
+          input.widget != null
+              ? SizedBox(
+                  width: width,
+                  child: Center(
+                    child: input.widget,
+                  ),
+                )
+              : Container(
+                  height: 55,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color(0xFF979797),
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Text(
+                        input.label,
+                        overflow: TextOverflow.clip,
+                        style: theme.textTheme.titleLarge,
+                      ),
                     ),
                   ),
                 ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: Text(
-                      input.label,
-                      style: theme.textTheme.titleLarge,
-                    ),
-                  ),
-                ),
-              ),
         ],
       ),
     );
