@@ -9,6 +9,23 @@ import 'package:flutter_media_picker/src/media_result.dart';
 
 /// Input for text used by [MediaPicker].
 class MediaPickerInputText implements MediaPickerInput {
+  /// Label for the text input.
+  @override
+  String label;
+
+  /// Widget for the text input.
+  @override
+  Widget? widget;
+
+  /// Map for checking page settings.
+  @override
+  Map<String, dynamic>? checkPageSettings;
+
+  /// Callback function when the input is completed.
+  @override
+  void Function(MediaResult value)? onComplete;
+
+  /// Constructor for [MediaPickerInputText].
   MediaPickerInputText({
     this.label = 'Text',
     this.widget,
@@ -16,29 +33,20 @@ class MediaPickerInputText implements MediaPickerInput {
     this.onComplete,
   });
 
-  @override
-  String label;
-
-  @override
-  Widget? widget;
-
+  /// Method to handle button press for picking text.
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
     return MediaResult(mimeType: 'plain/text');
   }
 
+  /// Method to display the result of picking text.
   @override
   Future<Widget> displayResult(MediaResult result) async {
     return const DisplayText();
   }
-
-  @override
-  Map<String, dynamic>? checkPageSettings;
-
-  @override
-  void Function(MediaResult value)? onComplete;
 }
 
+/// Widget to display text input.
 class DisplayText extends StatefulWidget {
   const DisplayText({Key? key}) : super(key: key);
 

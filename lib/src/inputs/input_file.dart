@@ -10,6 +10,27 @@ import '../../flutter_media_picker.dart';
 
 /// Input for file used by [MediaPicker].
 class MediaPickerInputFile implements MediaPickerInput {
+  /// Label for the file input.
+  @override
+  String label;
+
+  /// Widget for the file input.
+  @override
+  Widget? widget;
+
+  /// List of file extensions allowed.
+  final List<String> fileExtensions;
+
+  /// Factory for creating video players.
+  final VideoPlayerFactory videoPlayerFactory = MediaPickerVideoPlayerFactory();
+
+  /// Service for handling audio operations.
+  final AudioService audioService = MediaPickerAudioService();
+
+  /// Callback to pick a file.
+  final Future<FilePickerResult?> Function(List<String>)? pickFile;
+
+  /// Constructor for [MediaPickerInputFile].
   MediaPickerInputFile({
     this.label = 'File',
     this.widget,
@@ -19,17 +40,7 @@ class MediaPickerInputFile implements MediaPickerInput {
     this.pickFile,
   });
 
-  final Future<FilePickerResult?> Function(List<String>)? pickFile;
-  final List<String> fileExtensions;
-  final VideoPlayerFactory videoPlayerFactory = MediaPickerVideoPlayerFactory();
-  final AudioService audioService = MediaPickerAudioService();
-
-  @override
-  String label;
-
-  @override
-  Widget? widget;
-
+  /// Method to handle button press for picking a file.
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
     var filePicked = await pickFile?.call(fileExtensions);
@@ -47,6 +58,7 @@ class MediaPickerInputFile implements MediaPickerInput {
     return MediaResult();
   }
 
+  /// Method to display the result of picking a file.
   @override
   Future<Widget> displayResult(MediaResult result) async {
     if (result.fileValue != null) {
@@ -92,9 +104,11 @@ class MediaPickerInputFile implements MediaPickerInput {
     return Text(result.fileName!);
   }
 
+  /// Map for checking page settings.
   @override
   Map<String, dynamic>? checkPageSettings;
 
+  /// Callback function when the input is completed.
   @override
   void Function(MediaResult value)? onComplete;
 }

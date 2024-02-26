@@ -9,21 +9,39 @@ import 'package:mime/mime.dart';
 
 /// Input for photo used by [MediaPicker].
 class MediaPickerInputPhoto implements MediaPickerInput {
+  /// Function to pick a file for photo input.
+  final Future<MediaResult?> Function()? pickFile;
+
+  /// Label for the photo input.
+  @override
+  String label;
+
+  /// Widget representing the photo input.
+  @override
+  Widget? widget;
+
+  /// Map containing settings to check the page.
+  @override
+  Map<String, dynamic>? checkPageSettings;
+
+  /// Callback function called when the photo input is completed.
+  @override
+  void Function(MediaResult value)? onComplete;
+
+  /// Constructor for [MediaPickerInputPhoto].
+  ///
+  /// [pickFile]: Function to pick a file for photo input.
+  /// [label]: Label for the photo input. Defaults to 'Photo'.
+  /// [widget]: Widget representing the photo input.
+  /// [checkPageSettings]: Map containing settings to check the page.
+  /// [onComplete]: Callback function called when the photo input is completed.
   MediaPickerInputPhoto({
+    this.pickFile,
     this.label = 'Photo',
     this.widget,
     this.checkPageSettings,
     this.onComplete,
-    this.pickFile,
   });
-
-  final Future<MediaResult?> Function()? pickFile;
-
-  @override
-  String label;
-
-  @override
-  Widget? widget;
 
   @override
   Future<MediaResult> onPressed(BuildContext context) async {
@@ -52,10 +70,4 @@ class MediaPickerInputPhoto implements MediaPickerInput {
 
     return Container();
   }
-
-  @override
-  Map<String, dynamic>? checkPageSettings;
-
-  @override
-  void Function(MediaResult value)? onComplete;
 }
