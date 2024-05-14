@@ -1,3 +1,7 @@
+## 0.6.4
+
+- Loosened the dependency on intl to be more compatible with several Flutter versions
+
 ## 0.6.2
 
 - Remove null check operator for disabledPickers and perform appropriate null check
