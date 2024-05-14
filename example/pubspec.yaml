@@ -35,7 +35,7 @@ dependencies:
   flutter_form_wizard:
     git:
       url: https://github.com/Iconica-Development/flutter_form_wizard.git
-      ref: 6.1.0
+      ref: 6.3.2
   flutter_media_picker:
     path: ../
 
