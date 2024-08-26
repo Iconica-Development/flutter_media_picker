@@ -65,6 +65,7 @@ class _DisplayTextState extends State<DisplayText> {
     return FlutterFormInputPlainText(
       label: const Text('Title'),
       controller: _controller,
+      validationMessage: 'Field is mandatory',
     );
   }
 }

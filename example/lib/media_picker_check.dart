@@ -140,9 +140,11 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                     ),
                     Expanded(
                       child: FlutterFormInputMultiLine(
-                          hint: 'Add description...',
-                          maxCharacters: 300,
-                          controller: descriptionController),
+                        hint: 'Add description...',
+                        maxCharacters: 300,
+                        controller: descriptionController,
+                        validationMessage: 'Field is mandatory',
+                      ),
                     ),
                     const SizedBox(
                       height: 12,
@@ -156,6 +158,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                         ),
                       ),
                       controller: timelineSwitchController,
+                      validationMessage: 'Field is mandatory',
                     ),
                     const SizedBox(
                       height: 15,
@@ -169,6 +172,7 @@ class _MediaCheckPageState extends State<MediaCheckPage> {
                         ),
                       ),
                       controller: vaultSwitchController,
+                      validationMessage: 'Field is mandatory',
                     ),
                     const SizedBox(
                       height: 60,
