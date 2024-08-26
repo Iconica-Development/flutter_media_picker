@@ -1,3 +1,7 @@
+## 0.6.5
+
+- Added validationMessage where it was missing
+
 ## 0.6.4
 
 - Loosened the dependency on intl to be more compatible with several Flutter versions
