@@ -1,3 +1,7 @@
+## 0.6.6
+
+- Upgraded 'logger' package to ^2.4.0
+
 ## 0.6.5
 
 - Added validationMessage where it was missing
