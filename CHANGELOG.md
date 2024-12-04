@@ -1,3 +1,7 @@
+## 0.7.0
+
+- Added 'pickFileOfType' to the MediaPickerService
+
 ## 0.6.6
 
 - Upgraded 'logger' package to ^2.4.0
