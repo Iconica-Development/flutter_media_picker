@@ -4,7 +4,6 @@
 
 import 'dart:typed_data';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
 
 abstract class MediaPickerService {
@@ -16,4 +15,7 @@ abstract class MediaPickerService {
 
   /// Returns [FilePickerResult] based on given [File].
   Future<FilePickerResult?> pickFile(List<String> fileExtensions);
+
+  /// Returns [FilePickerResult] with type [FileType] based on given [File].
+  Future<FilePickerResult?> pickFileOfType(FileType type);
 }

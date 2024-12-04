@@ -4,7 +4,6 @@
 
 import 'dart:typed_data';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_media_picker/video_player/video_player_native.dart'
     if (dart.library.html) 'package:flutter_media_picker/video_player/video_player_web.dart'
     as vp;
 import 'package:video_player/video_player.dart';
+export 'package:file_picker/file_picker.dart';
 
 class MediaPickerFileService implements MediaPickerService {
   late VideoPlayerController controller;
@@ -58,17 +58,17 @@ class MediaPickerFileService implements MediaPickerService {
   }
 
   @override
-  Future<FilePickerResult?> pickFile(List<String> extensions) async {
-    var file = await FilePicker.platform.pickFiles(
-      withData: true,
-      type: FileType.custom,
-      allowedExtensions: extensions,
-    );
+  Future<FilePickerResult?> pickFile(List<String> extensions) async =>
+      FilePicker.platform.pickFiles(
+        withData: true,
+        type: FileType.custom,
+        allowedExtensions: extensions,
+      );
 
-    if (file != null) {
-      return file;
-    }
-
-    return Future.value(null);
-  }
+  @override
+  Future<FilePickerResult?> pickFileOfType(FileType type) async =>
+      FilePicker.platform.pickFiles(
+        withData: true,
+        type: type,
+      );
 }
