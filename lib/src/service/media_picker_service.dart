@@ -17,8 +17,10 @@ class MediaPickerFileService implements MediaPickerService {
   late VideoPlayerController controller;
 
   @override
-  Future<MediaResult?> pickImageFile(
-      {ImageSource source = ImageSource.camera, int quality = 20}) async {
+  Future<MediaResult?> pickImageFile({
+    ImageSource source = ImageSource.camera,
+    int quality = 20,
+  }) async {
     var image = await ImagePicker().pickImage(
       source: source,
       imageQuality: quality,
