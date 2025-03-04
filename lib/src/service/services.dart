@@ -4,3 +4,4 @@
 
 export './audio_service.dart';
 export './media_picker_service.dart';
+export 'package:image_picker/image_picker.dart' show ImageSource;
