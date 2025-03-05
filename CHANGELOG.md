@@ -1,3 +1,7 @@
+## 1.0.0
+
+- Use modern flutter version as minimal version support
+
 ## 0.7.0
 
 - Added 'pickFileOfType' to the MediaPickerService
