@@ -1,6 +1,6 @@
 name: flutter_media_picker
 description: A new Flutter package project.
-version: 0.7.0
+version: 1.0.1
 homepage: https://github.com/Iconica-Development/flutter_media_picker
 
 publish_to: https://forgejo.internal.iconica.nl/api/packages/internal/pub

@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Add imagesource and quality attributes when picking file
+
 ## 1.0.0
 
 - Use modern flutter version as minimal version support
