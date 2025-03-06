@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: BSD-3-Clause
 
 import 'package:example/media_picker_check.dart';
-import 'package:flutter/foundation.dart';
+import 'package:example/widgets/icon_button_with_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_media_picker/flutter_media_picker.dart';
 
@@ -20,7 +20,6 @@ class _MediaPickerExampleState extends State<MediaPickerExample> {
   @override
   Widget build(BuildContext context) {
     var mediaService = MediaPickerFileService();
-    var audioService = MediaPickerAudioService();
     return Wrap(
       children: [
         Container(
@@ -59,14 +58,17 @@ class _MediaPickerExampleState extends State<MediaPickerExample> {
                 height: 15,
               ),
               MediaPicker(
+                // horizontalSpacing: 20,
                 loadingIconColor: Theme.of(context).colorScheme.secondary,
+                indiviualWidgetWidth: MediaQuery.of(context).size.width / 3,
                 mediaPickerInputs: [
                   MediaPickerInputPhoto(
                     label: 'Make photo',
-                    // widget: const IconButtonWithText(
-                    //   icon: Icons.photo,
-                    //   iconText: "Make photo",
-                    // ),
+                    widget: const IconButtonWithText(
+                      icon: Icons.video_camera_front,
+                      iconText: "Make photo Make photo",
+                      iconSize: 48,
+                    ),
                     pickFile: mediaService.pickImageFile,
                     checkPageSettings: {
                       'title': 'Share photo',
@@ -79,10 +81,11 @@ class _MediaPickerExampleState extends State<MediaPickerExample> {
                   ),
                   MediaPickerInputVideo(
                     label: 'Make video',
-                    // widget: const IconButtonWithText(
-                    //   icon: Icons.video_camera_front,
-                    //   iconText: "Make video",
-                    // ),
+                    widget: const IconButtonWithText(
+                      icon: Icons.video_camera_front,
+                      iconText: "Make video",
+                      iconSize: 48,
+                    ),
                     pickFile: mediaService.pickVideoFile,
                     videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
@@ -94,69 +97,18 @@ class _MediaPickerExampleState extends State<MediaPickerExample> {
                       Navigator.pop(context);
                     },
                   ),
-                  if (!kIsWeb)
-                    MediaPickerInputAudio(
-                      label: 'Record audio',
-                      // widget: const IconButtonWithText(
-                      //   icon: Icons.record_voice_over,
-                      //   iconText: "Record audio",
-                      // ),
-                      checkPageSettings: {'title': 'Share audio'},
-                      onComplete: (MediaResult result) =>
-                          Navigator.pop(context),
-                      inputStyling: AudioInputStyling(
-                        leftButton: (_, __) => GestureDetector(
-                          onTap: () async => Navigator.pop(context),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: 45,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFD8D8D8),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Back',
-                                style: Theme.of(context).textTheme.labelLarge,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      audioService: audioService,
+                  MediaPickerInputVideo(
+                    label: 'Make video',
+                    widget: const IconButtonWithText(
+                      icon: Icons.video_camera_front,
+                      iconText: "Make video",
+                      iconSize: 48,
                     ),
-                  MediaPickerInputText(
-                    label: 'Write text',
-                    // widget: const IconButtonWithText(
-                    //   icon: Icons.text_fields,
-                    //   iconText: "Write text",
-                    // ),
-                    checkPageSettings: {'title': 'Share text'},
-                    onComplete: (MediaResult result) {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  MediaPickerInputFile(
-                    label: 'Select file',
-                    // widget: const IconButtonWithText(
-                    //   icon: Icons.file_copy,
-                    //   iconText: "Select file",
-                    // ),
-                    pickFile: mediaService.pickFile,
-                    fileExtensions: [
-                      'pdf',
-                      'doc',
-                      'png',
-                      'jpg',
-                      'docx',
-                      'bmp',
-                      'gif',
-                      'txt',
-                      'mp4',
-                      'mp3',
-                    ],
+                    pickFile: mediaService.pickVideoFile,
+                    videoPlayerFactory: MediaPickerVideoPlayerFactory(),
                     checkPageSettings: {
-                      'title': 'Share file',
+                      'title': 'Share video',
+                      'width': 122.5,
                       'height': 200.0,
                     },
                     onComplete: (MediaResult result) {
